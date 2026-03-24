@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Syne } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Header />
+        <BackgroundEffects />
         <main id="main-content" className="pb-16 pt-10 sm:pt-14">
           {children}
         </main>
