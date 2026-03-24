@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: 10 10 14;
+  --surface-elevated: 22 22 30;
+  --ink: 248 250 252;
+  --ink-muted: 148 163 184;
+  --accent: 56 189 248;
+  --accent-dim: 14 165 233;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-ink antialiased;
+  background-image: radial-gradient(
+      ellipse 120% 80% at 50% -30%,
+      rgb(var(--accent) / 0.12),
+      transparent
+    ),
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgb(var(--accent) / 0.06), transparent);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.35);
+  color: rgb(var(--ink));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -1,0 +1,21 @@
+How to view this site in your browser
+=======================================
+
+This project is not a single HTML file. It is built into a folder named "out".
+
+Easiest (Windows): double-click "Open-Portfolio.cmd" in this folder.
+  - First time only: installs packages and builds (needs Node.js from https://nodejs.org).
+  - Then it starts a small local server and should open your browser.
+
+In Cursor / VS Code:
+  - Press Ctrl+Shift+B (or Terminal > Run Task...) and run:
+    "Portfolio: Build and open preview"
+  - When the terminal says it is listening on port 3333, open:
+    http://127.0.0.1:3333
+  - Cursor may also show the port under "Ports" with an "Open in Browser" action.
+
+After a successful build, if you already have an "out" folder and Python installed
+but not Node, double-click "Open-Portfolio.cmd" — it can serve "out" with Python instead.
+
+There is no supported way to get the full experience by double-clicking one .html file
+without running a local server, because the site uses client-side navigation between pages.
