@@ -49,6 +49,11 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/og-image.svg"],
   },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   robots: { index: true, follow: true },
 };
 

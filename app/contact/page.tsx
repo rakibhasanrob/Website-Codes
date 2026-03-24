@@ -59,12 +59,12 @@ export default function ContactPage() {
             </li>
             <li>
               <Link
-                href={site.social.scholar}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between rounded-xl border border-white/10 bg-surface/50 px-4 py-3 text-ink transition hover:border-accent/30 hover:text-accent"
               >
-                Google Scholar
+                Facebook
                 <span aria-hidden>→</span>
               </Link>
             </li>
