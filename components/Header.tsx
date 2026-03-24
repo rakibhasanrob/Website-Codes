@@ -38,8 +38,8 @@ function NavLinks({
               aria-current={active ? "page" : undefined}
               className={`block rounded-lg px-3 py-2 text-sm font-medium transition sm:py-1.5 ${
                 active
-                  ? "bg-white/10 text-accent"
-                  : "text-ink-muted hover:bg-white/5 hover:text-ink"
+                  ? "bg-accent/15 text-accent"
+                  : "text-ink-muted hover:bg-[rgb(var(--ink)/0.06)] hover:text-ink"
               }`}
             >
               {label}
@@ -53,6 +53,14 @@ function NavLinks({
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("theme");
+    const next = saved === "light" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.classList.toggle("light", next === "light");
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -67,8 +75,15 @@ export function Header() {
     };
   }, [open]);
 
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    window.localStorage.setItem("theme", next);
+    document.documentElement.classList.toggle("light", next === "light");
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-surface/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-[rgb(var(--ink-muted)/0.2)] bg-surface/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -82,34 +97,66 @@ export function Header() {
         <nav className="hidden md:block" aria-label="Main">
           <NavLinks className="flex items-center gap-1" />
         </nav>
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-surface-elevated/50 text-ink md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="sr-only">Menu</span>
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-            aria-hidden
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="inline-flex h-10 items-center gap-2 rounded-lg border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/60 px-3 text-sm font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {open ? (
-              <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+            {theme === "dark" ? (
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36 6.36-1.41-1.41M7.05 7.05 5.64 5.64m12.72 0-1.41 1.41M7.05 16.95l-1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             )}
-          </svg>
-        </button>
+            <span className="hidden sm:inline">{theme === "dark" ? "Light" : "Dark"}</span>
+          </button>
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/60 text-ink md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="sr-only">Menu</span>
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden
+            >
+              {open ? (
+                <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {open ? (
@@ -119,7 +166,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t border-white/[0.06] bg-surface/95 backdrop-blur-md md:hidden"
+            className="border-t border-[rgb(var(--ink-muted)/0.2)] bg-surface/95 backdrop-blur-md md:hidden"
           >
             <NavLinks
               onNavigate={() => setOpen(false)}

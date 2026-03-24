@@ -11,6 +11,15 @@
   --accent-dim: 14 165 233;
 }
 
+html.light {
+  --surface: 247 250 252;
+  --surface-elevated: 236 244 252;
+  --ink: 15 23 42;
+  --ink-muted: 71 85 105;
+  --accent: 37 99 235;
+  --accent-dim: 29 78 216;
+}
+
 html {
   scroll-behavior: smooth;
 }
