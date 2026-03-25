@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState, type ReactNode } from "react";
-import { ButtonLink } from "@/components/Button";
 import { Section } from "@/components/Section";
 import { DynamicType } from "@/components/home/DynamicType";
+import { ButtonLink } from "@/components/ui/Button";
 
 const titles = [
   "Geospatial Data Analyst",
@@ -91,9 +90,9 @@ export function HomeHero() {
               My work focuses on data analytics, geospatial science, and research to explore real-world problems and support better policy-making.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <ButtonLink href="/contact">Get in touch</ButtonLink>
-              <ButtonLink href="/work" variant="outline" className="border-accent/55 bg-surface-elevated/70">
-                Explore work
+              <ButtonLink href="/contact" variant="primary">Get in touch</ButtonLink>
+              <ButtonLink href="/work" variant="secondary">
+                Explore projects
               </ButtonLink>
             </div>
           </motion.div>
