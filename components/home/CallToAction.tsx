@@ -23,7 +23,7 @@ export function CallToAction() {
             Ready to collaborate?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-muted">
-            Whether you need intricate geospatial data mapped out or interactive business dashboards brought to life, I'm ready to help you analyze and animate your data.
+            Whether you need intricate geospatial data mapped out or interactive business dashboards brought to life, I&apos;m ready to help you analyze and animate your data.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <ButtonLink href="/contact" variant="primary" className="px-8 py-3.5 text-base">
