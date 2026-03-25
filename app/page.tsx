@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { HomeHero } from "@/components/home/HomeHero";
+import { TwoPathGateway } from "@/components/home/TwoPathGateway";
+import { QuickSnapshot } from "@/components/home/QuickSnapshot";
 import { HomeSpotlights } from "@/components/home/HomeSpotlights";
 import { researchItems, workItems } from "@/lib/portfolio";
 
@@ -16,6 +18,8 @@ export default function HomePage() {
       >
         <HomeHero />
       </motion.div>
+      <TwoPathGateway />
+      <QuickSnapshot />
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
