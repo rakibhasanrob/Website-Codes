@@ -61,34 +61,63 @@ const socialLinks = [
   },
 ] as const;
 
+import Image from "next/image";
+import { ButtonLink } from "@/components/ui/Button";
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-24 border-t border-white/[0.06] bg-surface-elevated/30">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 lg:px-8">
-        <p className="text-sm text-ink-muted">
-          © {year} {site.name}. All rights reserved.
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          {socialLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`group inline-flex h-10 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
-              target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-            >
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
-                  {item.icon}
-                </svg>
-              </span>
-              <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-all duration-300 group-hover:ml-1.5 group-hover:max-w-32 group-hover:opacity-100">
-                {item.label}
-              </span>
-            </Link>
-          ))}
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-10 px-4 py-12 sm:flex-row sm:items-start sm:px-6 lg:px-8">
+        
+        {/* Left Side: Favicon and Copyright */}
+        <div className="flex flex-col items-center gap-4 sm:items-start">
+          <div className="flex items-center gap-3">
+            <Image 
+              src="/favicon.png" 
+              alt="Rakib Hasan Logo" 
+              width={28} 
+              height={28} 
+              className="rounded bg-surface-elevated shadow-sm ring-1 ring-white/10"
+            />
+            <p className="text-sm font-medium text-ink-muted">
+              © {year} Rakib Hasan. All rights reserved.
+            </p>
+          </div>
+          <p className="mt-2 max-w-sm text-center text-sm leading-relaxed text-ink-muted/80 sm:text-left">
+            Geospatial Data Analyst & Visualization Expert dedicated to transforming complex data into actionable insights through interactive dashboards.
+          </p>
         </div>
+
+        {/* Right Side: Contact / Socials */}
+        <div className="flex flex-col items-center gap-6 sm:items-end">
+          <ButtonLink href="/contact" variant="primary" className="px-6 py-2.5 text-sm font-semibold shadow-lg shadow-[rgb(var(--accent)/0.15)]">
+            Contact Me
+          </ButtonLink>
+          
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+            {socialLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`group inline-flex h-8 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                aria-label={item.label}
+              >
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+                    {item.icon}
+                  </svg>
+                </span>
+                <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs font-semibold opacity-0 transition-all duration-300 group-hover:ml-1.5 group-hover:max-w-32 group-hover:opacity-100">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+        
       </div>
     </footer>
   );

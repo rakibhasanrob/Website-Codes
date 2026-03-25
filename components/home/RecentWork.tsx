@@ -22,13 +22,13 @@ const workProjects = [
   {
     type: "Data Animation",
     title: "Scatter Plot Data Animation",
-    image: "/Scatter_plot.gif",
+    image: "/Scatter_plot.png",
     link: "/work",
   },
   {
     type: "Map Animation",
     title: "Origin–Destination Flow Map with intensity (heat) layers",
-    image: "/flow_map.gif",
+    image: "/flow_map.png",
     link: "/work",
   },
   {
