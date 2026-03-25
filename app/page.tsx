@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { HomeHero } from "@/components/home/HomeHero";
 import { TwoPathGateway } from "@/components/home/TwoPathGateway";
 import { QuickSnapshot } from "@/components/home/QuickSnapshot";
-import { HomeSpotlights } from "@/components/home/HomeSpotlights";
-import { researchItems, workItems } from "@/lib/portfolio";
+import { TopResearch } from "@/components/home/TopResearch";
+import { RecentWork } from "@/components/home/RecentWork";
+import { SkillsDock } from "@/components/home/SkillsDock";
+import { CallToAction } from "@/components/home/CallToAction";
 
 export default function HomePage() {
   return (
@@ -20,17 +22,10 @@ export default function HomePage() {
       </motion.div>
       <TwoPathGateway />
       <QuickSnapshot />
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <HomeSpotlights
-          featuredResearch={researchItems[0]}
-          featuredWork={workItems[0]}
-        />
-      </motion.div>
+      <TopResearch />
+      <RecentWork />
+      <SkillsDock />
+      <CallToAction />
     </>
   );
 }
