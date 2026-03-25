@@ -29,9 +29,6 @@ export function CallToAction() {
             <ButtonLink href="/contact" variant="primary" className="px-8 py-3.5 text-base">
               Get in Touch
             </ButtonLink>
-            <ButtonLink href="/work" variant="secondary" className="px-8 py-3.5 text-base shadow-[0_0_15px_rgba(255,255,255,0.03)] border-white/[0.12]">
-              See My Projects
-            </ButtonLink>
           </div>
         </div>
       </motion.div>
