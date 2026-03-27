@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
@@ -30,6 +29,13 @@ const education = [
 
 const skillGroups = [
   {
+    label: "Core Competencies",
+    items: ["Data Analysis", "Geospatial Analysis", "Statistical Analysis", "Data Visualization", "Research & Problem Solving"],
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5Z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>
+    ),
+  },
+  {
     label: "Programming",
     items: ["Python", "SQL", "JavaScript"],
     icon: (
@@ -45,14 +51,14 @@ const skillGroups = [
   },
   {
     label: "Data Tools",
-    items: ["Power BI", "Excel"],
+    items: ["Power BI", "Excel", "Google Looker Studio"],
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" /><path d="M3 5v14a2 2 0 0 0 2 2h16v-5" /><path d="M18 12a2 2 0 0 0 0 4h4v-4Z" /></svg>
     ),
   },
   {
     label: "Visualization",
-    items: ["Matplotlib", "Plotly"],
+    items: ["Matplotlib", "Plotly", "D3.js", "Mapbox"],
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /><line x1="2" y1="20" x2="22" y2="20" /></svg>
     ),
@@ -60,11 +66,76 @@ const skillGroups = [
 ];
 
 const certifications = [
-  "Google Data Analytics Professional Certificate",
-  "Data Analysis Using Python (University of Pennsylvania)",
-  "GIS Specialization (University of Toronto)",
-  "Prompt Engineering (Vanderbilt University)",
-  "Microsoft Career Essentials in Data Analysis",
+  {
+    title: "GIS, Mapping, and Spatial Analysis",
+    issuer: "University of Toronto",
+    logo: "/certificate_jobsimu/university_of_toronto_logo.jpg",
+    verifyLink: "https://www.coursera.org/account/accomplishments/specialization/YKXNI1R524KS",
+    certPic: "/certificate_jobsimu/toronto.jpg",
+  },
+  {
+    title: "Data Analysis Using Python",
+    issuer: "University of Pennsylvania",
+    logo: "/certificate_jobsimu/university_of_pennsylvania_logo.jpg",
+    verifyLink: "https://www.coursera.org/account/accomplishments/verify/2KXK2WE1CNKV",
+    certPic: "/certificate_jobsimu/unipenn.jpg",
+  },
+  {
+    title: "Geospatial Analysis with ArcGIS",
+    issuer: "University of California, Davis",
+    logo: "/certificate_jobsimu/uc_davis_logo.jpg",
+    verifyLink: "https://www.coursera.org/account/accomplishments/verify/MXMJ7VU3B17E",
+    certPic: "/certificate_jobsimu/ucdaviscer.jpg",
+  },
+  {
+    title: "Google Data Analytics",
+    issuer: "Google",
+    logo: "/certificate_jobsimu/google_logo.jpg",
+    verifyLink: "https://www.coursera.org/account/accomplishments/professional-cert/IY318AXALQWV",
+    certPic: "/certificate_jobsimu/googlecer.jpg",
+  },
+  {
+    title: "Career Essentials in Data Analysis",
+    issuer: "Microsoft & LinkedIn",
+    logo: "/certificate_jobsimu/microsoft_logo.jpg",
+    verifyLink: "https://www.linkedin.com/learning/certificates/43f02b544c8b8c12d77865a28271c264bac7abbe1bf2b7ed22566581d3697d2b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bgg27ksWOSdytyjZ7jYNMkA%3D%3D",
+    certPic: "/certificate_jobsimu/microcer.jpg",
+  },
+];
+
+const jobSimulations = [
+  {
+    title: "Data Analytics Job Simulation",
+    company: "Quantium",
+    platform: "Forage",
+    logo: "/certificate_jobsimu/quantium_logo.jpg",
+    verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/32A6DqtsbF7LbKdcq/NkaC7knWtjSbi6aYv_32A6DqtsbF7LbKdcq_ChXRt4wsWkkDDmTtr_1733395304509_completion_certificate.pdf",
+    certPic: "/certificate_jobsimu/1733419586211.png",
+  },
+  {
+    title: "Data Visualisation: Empowering Business with Effective Insights",
+    company: "Tata Group",
+    platform: "Forage",
+    logo: "/certificate_jobsimu/tata_group_logo.jpg",
+    verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Tata/MyXvBcppsW2FkNYCX_Tata%20Group_ChXRt4wsWkkDDmTtr_1726868168656_completion_certificate.pdf",
+    certPic: "/certificate_jobsimu/1727177684184.jpg",
+  },
+  {
+    title: "Data Analytics and Visualization",
+    company: "Accenture North America",
+    platform: "Forage",
+    logo: "/certificate_jobsimu/accenture_logo.jpg",
+    verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_ChXRt4wsWkkDDmTtr_1722538358454_completion_certificate.pdf",
+    certPic: "/certificate_jobsimu/1726853878451.png",
+  },
+  {
+    title: "Power BI Job Simulation",
+    company: "PwC Switzerland",
+    platform: "Forage",
+    logo: "/certificate_jobsimu/pwc_switzerland_logo.jpg",
+    verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/PwC%20Switzerland/a87GpgE6tiku7q3gu_PwC%20Switzerland_ChXRt4wsWkkDDmTtr_1726853604952_completion_certificate.pdf",
+    certPic: "/certificate_jobsimu/1726853739710.png",
+  },
 ];
 
 const activities = [
@@ -376,18 +447,6 @@ export function ResumeSection() {
                 </div>
               ))}
             </div>
-            <div className="mt-5">
-              <Link
-                href="/skills"
-                className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-5 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/20 hover:border-accent/50 hover:scale-[1.03] active:scale-[0.97]"
-              >
-                View All My Skills
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-            </div>
           </AccordionItem>
         </motion.div>
 
@@ -409,32 +468,156 @@ export function ResumeSection() {
               </svg>
             }
           >
-            <ul className="space-y-2.5">
-              {certifications.map((cert, i) => (
-                <li
-                  key={cert}
-                  className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-surface/50 px-4 py-3 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+            <div className="space-y-4">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.title}
+                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 >
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-xs font-bold text-accent">
-                    {i + 1}
-                  </span>
-                  <span className="text-sm text-ink-muted leading-relaxed">
-                    {cert}
-                  </span>
-                </li>
+                  <div className="flex gap-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5">
+                      <Image
+                        src={cert.logo}
+                        alt={cert.issuer}
+                        width={48}
+                        height={48}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div>
+                          <h4 className="font-display text-base font-semibold text-ink leading-snug">
+                            {cert.title}
+                          </h4>
+                          <p className="mt-0.5 text-sm text-accent/80 font-medium">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <a
+                          href={cert.verifyLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                        >
+                          Verify
+                          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Certificate image thumbnail */}
+                  <div className="mt-3">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxSrc(cert.certPic)}
+                      className="group relative overflow-hidden rounded-lg border border-white/[0.08] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
+                    >
+                      <Image
+                        src={cert.certPic}
+                        alt={`${cert.title} certificate`}
+                        fill
+                        className="object-cover"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
+                        <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
               ))}
-            </ul>
-            <div className="mt-5">
-              <Link
-                href="/skills#certifications"
-                className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-5 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/20 hover:border-accent/50 hover:scale-[1.03] active:scale-[0.97]"
-              >
-                View Full Certifications
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
+            </div>
+          </AccordionItem>
+        </motion.div>
+
+        {/* Job Simulations */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.18 }}
+        >
+          <AccordionItem
+            id="accordion-jobsimulations"
+            title="Job Simulations"
+            defaultOpen={true}
+            icon={
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                <line x1="12" y1="12" x2="12" y2="12.01" />
+              </svg>
+            }
+          >
+            <div className="space-y-4">
+              {jobSimulations.map((sim) => (
+                <div
+                  key={sim.title}
+                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                >
+                  <div className="flex gap-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5">
+                      <Image
+                        src={sim.logo}
+                        alt={sim.company}
+                        width={48}
+                        height={48}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div>
+                          <h4 className="font-display text-base font-semibold text-ink leading-snug">
+                            {sim.title}
+                          </h4>
+                          <p className="mt-0.5 text-sm text-accent/80 font-medium">
+                            {sim.company}
+                          </p>
+                          <p className="text-xs text-ink-muted">
+                            via {sim.platform}
+                          </p>
+                        </div>
+                        <a
+                          href={sim.verifyLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                        >
+                          Verify
+                          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Certificate image thumbnail */}
+                  <div className="mt-3">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxSrc(sim.certPic)}
+                      className="group relative overflow-hidden rounded-lg border border-white/[0.08] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
+                    >
+                      <Image
+                        src={sim.certPic}
+                        alt={`${sim.title} certificate`}
+                        fill
+                        className="object-cover"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
+                        <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </AccordionItem>
         </motion.div>
