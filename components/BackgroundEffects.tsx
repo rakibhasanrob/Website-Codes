@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 
-type EffectMode = "none" | "plexus" | "galaxy" | "ember" | "snow";
+export type EffectMode = "none" | "plexus" | "galaxy" | "ember" | "snow";
 
-const effectButtons: { mode: EffectMode; label: string; icon: ReactNode }[] = [
+export const effectButtons: { mode: EffectMode; label: string; icon: ReactNode }[] = [
   {
     mode: "none",
     label: "No effects",
@@ -64,12 +64,17 @@ export function BackgroundEffects() {
     const next = valid ? (saved as EffectMode) : "galaxy";
     setEffectMode(next);
     if (!saved) window.localStorage.setItem("hero-effect", "galaxy");
-  }, []);
 
-  function handleEffectChange(mode: EffectMode) {
-    setEffectMode(mode);
-    window.localStorage.setItem("hero-effect", mode);
-  }
+    // Listen for events from Header dropdown
+    function onEffectChanged(e: Event) {
+      const customEvent = e as CustomEvent<EffectMode>;
+      if (customEvent.detail) {
+        setEffectMode(customEvent.detail);
+      }
+    }
+    window.addEventListener("effect-changed", onEffectChanged);
+    return () => window.removeEventListener("effect-changed", onEffectChanged);
+  }, []);
 
   return (
     <>
@@ -135,56 +140,6 @@ export function BackgroundEffects() {
             ))}
           </>
         ) : null}
-      </div>
-
-      <div className="fixed right-3 top-1/2 z-50 -translate-y-1/2 hidden lg:block">
-        <div className="group flex flex-col items-center gap-1.5 rounded-2xl border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/80 px-1.5 py-3 backdrop-blur-md shadow-xl shadow-black/20">
-          {effectButtons.map((item) => {
-            const active = item.mode === effectMode;
-            return (
-              <button
-                key={item.mode}
-                type="button"
-                onClick={() => handleEffectChange(item.mode)}
-                className={`dock-item relative inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-lg text-ink-muted transition-all duration-200 hover:-translate-x-1 hover:scale-150 ${
-                  active ? "bg-accent/20 text-accent" : "hover:text-accent"
-                }`}
-                title={item.label}
-                aria-label={item.label}
-                aria-pressed={active}
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                  {item.icon}
-                </svg>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-      
-      {/* Mobile controller (bottom) */}
-      <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 lg:hidden">
-        <div className="flex items-center gap-1.5 rounded-2xl border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/80 px-3 py-1.5 backdrop-blur-md shadow-xl shadow-black/20">
-          {effectButtons.map((item) => {
-            const active = item.mode === effectMode;
-            return (
-              <button
-                key={`${item.mode}-mobile`}
-                type="button"
-                onClick={() => handleEffectChange(item.mode)}
-                className={`inline-flex h-7 w-7 items-center justify-center rounded-lg text-ink-muted transition-all duration-200 hover:-translate-y-1 hover:scale-125 ${
-                  active ? "bg-accent/20 text-accent" : "hover:text-accent"
-                }`}
-                title={item.label}
-                aria-label={item.label}
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                  {item.icon}
-                </svg>
-              </button>
-            );
-          })}
-        </div>
       </div>
     </>
   );
