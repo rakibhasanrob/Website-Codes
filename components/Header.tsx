@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 import { AnimatePresence, motion } from "framer-motion";
-import { effectButtons, type EffectMode } from "@/components/BackgroundEffects";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -56,8 +55,6 @@ function NavLinks({
 export function Header() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [effectDropdownOpen, setEffectDropdownOpen] = useState(false);
-  const [currentEffect, setCurrentEffect] = useState<EffectMode>("galaxy");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("theme");
@@ -90,20 +87,6 @@ export function Header() {
     window.localStorage.setItem("theme", next);
     document.documentElement.classList.toggle("light", next === "light");
   }
-
-  function handleEffectSelect(mode: EffectMode) {
-    setCurrentEffect(mode);
-    window.localStorage.setItem("hero-effect", mode);
-    window.dispatchEvent(new CustomEvent("effect-changed", { detail: mode }));
-    setEffectDropdownOpen(false);
-  }
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("hero-effect") as EffectMode;
-    if (saved && effectButtons.some((item) => item.mode === saved)) {
-      setCurrentEffect(saved);
-    }
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[rgb(var(--ink-muted)/0.2)] bg-surface/80 backdrop-blur-md">
@@ -158,69 +141,8 @@ export function Header() {
                 )}
               </span>
             </span>
-            <span className="hidden pr-1 sm:inline">{theme === "dark" ? "Light" : "Dark"}</span>
+            <span className="hidden pr-1 sm:inline">{theme === "dark" ? "Light mode" : "Dark mode"}</span>
           </button>
-
-          {/* Background Effects Dropdown */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setEffectDropdownOpen(!effectDropdownOpen)}
-              className="group inline-flex h-10 items-center justify-center gap-1.5 rounded-full border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/70 px-3 text-sm font-medium text-ink transition hover:border-accent/40"
-              aria-label="Change Background Effect"
-              title="Change Background Effect"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                {effectButtons.find((e) => e.mode === currentEffect)?.icon || effectButtons[2].icon}
-              </svg>
-              <span className="hidden pr-1.5 sm:inline">
-                {effectButtons.find((e) => e.mode === currentEffect)?.label || "Galaxy"}
-              </span>
-              <svg className={`h-3.5 w-3.5 text-ink-muted transition-transform duration-200 ${effectDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            <AnimatePresence>
-              {effectDropdownOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setEffectDropdownOpen(false)} 
-                    aria-label="Close background effects dropdown"
-                  />
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute right-0 top-[120%] z-50 w-44 overflow-hidden rounded-xl border border-[rgb(var(--ink-muted)/0.2)] bg-surface-elevated/95 p-1.5 shadow-2xl backdrop-blur-xl"
-                  >
-                    {effectButtons.map((item) => {
-                      const active = item.mode === currentEffect;
-                      return (
-                        <button
-                          key={item.mode}
-                          onClick={() => handleEffectSelect(item.mode)}
-                          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
-                            active 
-                              ? "bg-accent/15 text-accent font-semibold" 
-                              : "text-ink-muted hover:bg-[rgb(var(--ink)/0.06)] hover:text-ink"
-                          }`}
-                        >
-                          <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 transition-transform group-hover:scale-110" fill="none">
-                            {item.icon}
-                          </svg>
-                          {item.label}
-                        </button>
-                      );
-                    })}
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
-          </div>
-
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/60 text-ink md:hidden"
