@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
-import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { Section } from "@/components/Section";
-import { workItems } from "@/lib/portfolio";
+import { ProjectsContent } from "@/components/work/ProjectsContent";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Work Portfolio",
-  description: `Selected professional and product work by ${site.name}.`,
+  title: "Projects",
+  description: `Explore ${site.name}'s portfolio — data animations, map visualizations, interactive dashboards, GIS analysis, and more.`,
 };
 
 export default function WorkPage() {
   return (
-    <Section>
-      <PageHeader
-        title="Work portfolio"
-        description="Case studies, shipped products, and collaborations. Detail pages are ready for screenshots, stack notes, and outcomes."
-      />
-      <PortfolioGrid items={workItems} basePath="/work" />
-    </Section>
+    <>
+      <Section>
+        <PageHeader
+          title="Projects"
+          description="Explore my work across data animation, interactive dashboards, GIS mapping, and research visualizations."
+        />
+      </Section>
+      <ProjectsContent />
+    </>
   );
 }
