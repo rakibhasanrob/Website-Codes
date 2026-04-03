@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/PageHeader";
+
 import { Section } from "@/components/Section";
 import { CollaborationContent } from "@/components/collaboration/CollaborationContent";
 import { site } from "@/lib/site";
@@ -18,7 +18,7 @@ export default function CollaborationPage() {
             Let&apos;s Collaborate
           </h1>
           <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
-            Open to partnerships in data analytics, geospatial science, and research-driven projects with researchers, students, and organizations.
+            I&apos;m open to working with researchers, students, and organizations on data, GIS, and research projects.
           </p>
         </header>
       </Section>

@@ -50,8 +50,8 @@ export function RecentWork() {
     <Section className="mt-20 sm:mt-28 mb-24">
       <div className="mb-12">
         <h2 className="font-display text-3xl font-semibold text-ink">Recent Work Highlights</h2>
-        <p className="mt-3 text-ink-muted max-w-2xl">
-          Explore interactive dashboards, data animations, and visualizations from real-world projects.
+        <p className="mt-3 text-ink-muted max-w-full">
+          A few things I&apos;ve built — dashboards, maps, and animations from actual projects I&apos;ve worked on.
         </p>
       </div>
 

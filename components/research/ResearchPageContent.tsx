@@ -87,7 +87,7 @@ export function ResearchPageContent() {
           <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Research Interests
           </h2>
-          <p className="mt-3 text-ink-muted text-lg">Key domains shaping my investigative approach to environmental and spatial intelligence.</p>
+
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {researchInterests.map((interest, i) => (

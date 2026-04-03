@@ -33,7 +33,7 @@ export function ContactActions() {
           type="text"
           required
           autoComplete="off"
-          className="mt-2 w-full rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
+          className="mt-2 w-full rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
           placeholder="Project inquiry, talk, collaboration…"
         />
       </div>
@@ -46,7 +46,7 @@ export function ContactActions() {
           name="message"
           required
           rows={5}
-          className="mt-2 w-full resize-y rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
+          className="mt-2 w-full resize-y rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
           placeholder="Tell me a bit about what you have in mind."
         />
       </div>

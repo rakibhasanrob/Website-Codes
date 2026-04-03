@@ -87,7 +87,7 @@ export function HomeHero() {
               <DynamicType words={titles} typingSpeed={130} deletingSpeed={70} pauseMs={2100} />
             </p>
             <p className="mt-6 max-w-xl text-ink-muted">
-              My work focuses on data analytics, geospatial science, and research to explore real-world problems and support better policy-making.
+              I work at the intersection of data, geography, and research — trying to make sense of real-world problems and help people make better decisions with that knowledge.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <ButtonLink href="/contact" variant="primary">Get in touch</ButtonLink>

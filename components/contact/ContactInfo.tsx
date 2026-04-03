@@ -11,8 +11,6 @@ const contactDetails = [
     label: "Email",
     value: "contact@rakibhasan.rf.gd",
     href: "mailto:contact@rakibhasan.rf.gd",
-    secondaryValue: "rakibhasanrobben@gmail.com",
-    secondaryHref: "mailto:rakibhasanrobben@gmail.com",
     icon: (
       <>
         <rect x="3.5" y="6.5" width="17" height="11" rx="2" stroke="currentColor" strokeWidth="1.8" />
@@ -21,22 +19,6 @@ const contactDetails = [
     ),
     color: "from-blue-500/20 to-cyan-500/20",
     iconColor: "text-blue-400",
-  },
-  {
-    label: "Phone",
-    value: "+880 1987418660",
-    href: "tel:+8801987418660",
-    icon: (
-      <path
-        d="M3 5.5a2.5 2.5 0 0 1 2.5-2.5h1.528c.476 0 .904.286 1.085.723l1.083 2.599a1.125 1.125 0 0 1-.3 1.3l-.993.828a.5.5 0 0 0-.125.543 10.052 10.052 0 0 0 5.83 5.83.5.5 0 0 0 .543-.126l.828-.992a1.125 1.125 0 0 1 1.3-.3l2.598 1.082c.438.182.724.61.724 1.086v1.527A2.5 2.5 0 0 1 18.5 19h-1A13.5 13.5 0 0 1 4 5.5h-1Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    ),
-    color: "from-emerald-500/20 to-teal-500/20",
-    iconColor: "text-emerald-400",
   },
 ];
 
@@ -146,7 +128,7 @@ export function ContactInfo() {
                   </svg>
                 </span>
                 <div className="min-w-0">
-                  <p className="text-xs font-medium uppercase tracking-wider text-ink-muted/70">
+                  <p className="text-xs font-medium uppercase tracking-wider text-ink-muted">
                     {item.label}
                   </p>
                   <a
@@ -155,14 +137,7 @@ export function ContactInfo() {
                   >
                     {item.value}
                   </a>
-                  {item.secondaryValue && (
-                    <a
-                      href={item.secondaryHref}
-                      className="mt-0.5 block truncate text-sm text-ink-muted transition-colors hover:text-accent"
-                    >
-                      {item.secondaryValue}
-                    </a>
-                  )}
+
                 </div>
               </div>
             </div>
@@ -231,9 +206,7 @@ export function ContactInfo() {
           </div>
 
           <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-            Looking for professional freelance services? I offer GIS mapping,
-            data visualization, web development, and more on Fiverr. Let&apos;s
-            collaborate and bring your project to life!
+            Need GIS mapping, data visualization, or web work done? Check out my Fiverr — I&apos;d love to help.
           </p>
 
           <Link

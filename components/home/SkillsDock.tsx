@@ -143,9 +143,7 @@ export function SkillsDock() {
       {/* Centered Heading */}
       <div className="mb-14 text-center">
         <h2 className="font-display text-3xl font-semibold text-ink">Skills & Tools</h2>
-        <p className="mt-3 text-ink-muted max-w-2xl mx-auto">
-          The core methodologies and dedicated software I use to bring complex data to life.
-        </p>
+
       </div>
 
       <motion.div

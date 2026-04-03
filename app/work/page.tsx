@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/PageHeader";
+
 import { Section } from "@/components/Section";
 import { ProjectsContent } from "@/components/work/ProjectsContent";
 import { site } from "@/lib/site";
@@ -18,7 +18,7 @@ export default function WorkPage() {
             Projects
           </h1>
           <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
-            Explore my work across data animation, interactive dashboards, GIS mapping, and research visualizations.
+            Things I&apos;ve made — maps, dashboards, animations, and visualizations across different projects.
           </p>
         </header>
       </Section>

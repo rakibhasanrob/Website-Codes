@@ -84,8 +84,8 @@ export function Footer() {
               © {year} Rakib Hasan. All rights reserved.
             </p>
           </div>
-          <p className="mt-2 max-w-sm text-center text-sm leading-relaxed text-ink-muted/80 sm:text-left">
-            Geospatial Data Analyst & Visualization Expert dedicated to transforming complex data into actionable insights through interactive dashboards.
+          <p className="mt-2 max-w-sm text-center text-sm leading-relaxed text-ink-muted sm:text-left">
+            Geospatial Data Analyst & Visualization Expert
           </p>
         </div>
 

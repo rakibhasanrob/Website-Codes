@@ -17,7 +17,7 @@ export default function ResearchPage() {
             Research Portfolio
           </h1>
           <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
-            A centralized showcase of my core academic interests, professional investigations, geospatial mapping portfolios, and organizational research activities.
+            My research work — field reports, GIS projects, and the academic stuff I&apos;ve been part of.
           </p>
         </header>
       </Section>

@@ -73,33 +73,99 @@ export function BackgroundEffects() {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-0 -z-10 opacity-75">
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-surface transition-colors duration-500">
         {effectMode === "plexus" ? (
           <>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.2)_1px,transparent_1px)] bg-[size:50px_50px]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,0.36),transparent_48%),radial-gradient(circle_at_80%_90%,rgba(14,165,233,0.3),transparent_44%)]" />
-            {Array.from({ length: 18 }).map((_, i) => (
-              <motion.span
-                key={`plex-${i}`}
-                className="absolute h-2 w-2 rounded-full bg-accent/85"
-                style={{ left: `${6 + (i * 5) % 90}%`, top: `${8 + (i * 7) % 82}%` }}
-                animate={{ opacity: [0.2, 1, 0.3], scale: [0.8, 1.25, 0.85] }}
-                transition={{ duration: 2.6 + (i % 4) * 0.55, repeat: Infinity, ease: "easeInOut" }}
-                aria-hidden="true"
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.15),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(14,165,233,0.1),transparent_40%)]" />
+            <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[100px] opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[20%] right-[20%] w-[40vw] h-[40vw] rounded-full bg-accent-dim/10 blur-[100px] opacity-60 mix-blend-screen" />
+            
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--ink-muted),0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--ink-muted),0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)]" />
+            
+            {Array.from({ length: 15 }).map((_, i) => (
+              <motion.div
+                key={`geo-${i}`}
+                className="absolute border border-[rgb(var(--ink-muted),0.15)] bg-[rgb(var(--surface-elevated),0.3)] backdrop-blur-md"
+                style={{
+                  left: `${5 + (i * 17) % 85}%`,
+                  top: `${5 + (i * 23) % 85}%`,
+                  width: `${60 + (i % 4) * 40}px`,
+                  height: `${60 + (i % 4) * 40}px`,
+                  clipPath: i % 2 === 0 
+                    ? "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" 
+                    : i % 3 === 0 
+                      ? "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)"
+                      : "polygon(50% 0%, 100% 100%, 0% 100%)",
+                }}
+                animate={{
+                  y: [0, -60, 0],
+                  x: [0, 40, 0],
+                  rotate: [0, 180, 360],
+                  opacity: [0.3, 0.7, 0.3],
+                }}
+                transition={{
+                  duration: 25 + i * 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
             ))}
           </>
         ) : null}
         {effectMode === "galaxy" ? (
           <>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_45%_45%,rgba(30,64,175,0.4),transparent_46%),radial-gradient(circle_at_82%_75%,rgba(56,189,248,0.25),transparent_40%)]" />
-            {Array.from({ length: 38 }).map((_, i) => (
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(30,64,175,0.25),transparent_50%),radial-gradient(ellipse_at_70%_20%,rgba(14,165,233,0.15),transparent_40%)]" />
+            
+            {/* Distant static stars */}
+            {Array.from({ length: 50 }).map((_, i) => (
               <motion.span
-                key={`star-${i}`}
-                className="absolute rounded-full bg-white"
-                style={{ left: `${5 + (i * 3) % 93}%`, top: `${8 + (i * 7) % 82}%`, width: `${2 + (i % 2)}px`, height: `${2 + (i % 2)}px` }}
-                animate={{ opacity: [0.2, 1, 0.25], scale: [0.9, 1.4, 0.9] }}
-                transition={{ duration: 2.1 + (i % 5) * 0.6, repeat: Infinity, ease: "easeInOut" }}
+                key={`bg-star-${i}`}
+                className="absolute rounded-full bg-[rgb(var(--fx-particle))]"
+                style={{ left: `${(i * 7) % 100}%`, top: `${(i * 13) % 100}%`, width: '1px', height: '1px' }}
+                animate={{ opacity: [0.1, 0.4, 0.1] }}
+                transition={{ duration: 3 + (i % 5), repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              />
+            ))}
+            
+            {/* Mid drifting stars */}
+            {Array.from({ length: 25 }).map((_, i) => (
+              <motion.span
+                key={`mid-star-${i}`}
+                className="absolute rounded-full bg-[rgb(var(--fx-particle))]"
+                style={{ left: `${(i * 11) % 100}%`, top: `${(i * 17) % 100}%`, width: '1.5px', height: '1.5px' }}
+                animate={{ 
+                  y: [0, -80], 
+                  x: [0, 30],
+                  opacity: [0, 0.6, 0] 
+                }}
+                transition={{ 
+                  duration: 15 + (i % 10), 
+                  repeat: Infinity, 
+                  ease: "linear",
+                  delay: (i % 5) * 2
+                }}
+                aria-hidden="true"
+              />
+            ))}
+
+            {/* Foreground faster stars */}
+            {Array.from({ length: 15 }).map((_, i) => (
+              <motion.span
+                key={`fg-star-${i}`}
+                className="absolute rounded-full bg-accent"
+                style={{ left: `${(i * 19) % 100}%`, top: `${(i * 23) % 100}%`, width: `${2 + (i % 2)}px`, height: `${2 + (i % 2)}px` }}
+                animate={{ 
+                  y: [0, -120], 
+                  x: [0, 45],
+                  opacity: [0, 0.9, 0] 
+                }}
+                transition={{ 
+                  duration: 10 + (i % 8), 
+                  repeat: Infinity, 
+                  ease: "linear",
+                  delay: (i % 4) * 1.5
+                }}
                 aria-hidden="true"
               />
             ))}
@@ -122,13 +188,13 @@ export function BackgroundEffects() {
         ) : null}
         {effectMode === "snow" ? (
           <>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(186,230,253,0.3),transparent_52%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(186,230,253,0.15),transparent_52%)]" />
             {Array.from({ length: 34 }).map((_, i) => (
               <motion.span
                 key={`snow-${i}`}
-                className="absolute rounded-full bg-white/90"
+                className="absolute rounded-full bg-[rgb(var(--fx-particle))]"
                 style={{ left: `${4 + (i * 3) % 94}%`, top: `${-12 - (i % 4) * 14}%`, width: `${3 + (i % 3)}px`, height: `${3 + (i % 3)}px` }}
-                animate={{ y: [0, 460], x: [0, i % 2 === 0 ? 12 : -10], opacity: [0.2, 1, 0.35] }}
+                animate={{ y: [0, 460], x: [0, i % 2 === 0 ? 12 : -10], opacity: [0, 0.85, 0] }}
                 transition={{ duration: 5 + (i % 4) * 0.85, repeat: Infinity, ease: "linear", delay: i * 0.18 }}
                 aria-hidden="true"
               />

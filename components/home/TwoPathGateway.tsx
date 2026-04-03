@@ -52,7 +52,7 @@ export function TwoPathGateway() {
                 Real World Projects
               </h2>
               <p className="mt-3 text-ink-muted leading-relaxed">
-                Explore my real-world projects including Interactive Dashboards, Interactive Visuals, Data Animation, and Map Animation.
+                Explore my real world projects.
               </p>
             </div>
             <div className="mt-8">

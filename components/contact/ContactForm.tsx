@@ -42,13 +42,13 @@ export function ContactForm() {
     return () => form.removeEventListener("pageclip-form:success", handleDone);
   }, []);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit() {
     /* Don't prevent default — let Pageclip handle submission */
     setStatus("submitting");
   }
 
   const inputClasses =
-    "mt-2 w-full rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all duration-200";
+    "mt-2 w-full rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all duration-200";
 
   const labelClasses = "block text-sm font-medium text-ink";
 

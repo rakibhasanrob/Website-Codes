@@ -83,32 +83,7 @@ const companies = [
   { name: "Vertical Recruitment", file: "Vertical Recruitment.png" },
 ];
 
-const testimonials = [
-  {
-    name: "Sarah Mitchell",
-    country: "United States",
-    text: "Rakib delivered an outstanding interactive dashboard that transformed our raw sales data into actionable insights. His attention to detail and ability to understand our business needs made the collaboration seamless.",
-    flag: "🇺🇸",
-  },
-  {
-    name: "Dr. Ahmed Khan",
-    country: "United Kingdom",
-    text: "Working with Rakib on our geospatial research project was a fantastic experience. His GIS expertise and data visualization skills elevated our paper significantly. Highly recommended for academic collaborations.",
-    flag: "🇬🇧",
-  },
-  {
-    name: "Maria Gonzalez",
-    country: "Canada",
-    text: "The map animations Rakib created for our environmental report were truly impressive. He communicated clearly throughout the project and delivered everything ahead of schedule.",
-    flag: "🇨🇦",
-  },
-  {
-    name: "James Okonkwo",
-    country: "Australia",
-    text: "Rakib's data storytelling ability is exceptional. He took our complex dataset and turned it into a compelling visual narrative that our stakeholders could easily understand and act upon.",
-    flag: "🇦🇺",
-  },
-];
+
 
 /* ─── Component ─────────────────────────────────────── */
 
@@ -181,7 +156,7 @@ export function CollaborationContent() {
               Clients &amp; Organizations
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-ink-muted">
-              Worked with a diverse range of clients including startups, local businesses, and independent professionals.
+              Worked with a diverse range of clients including startups, small businesses, and independent professionals.
             </p>
           </motion.div>
 
@@ -234,8 +209,7 @@ export function CollaborationContent() {
               Interested in working together?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-ink-muted">
-              Whether it&apos;s a research partnership, a data visualization project, or a freelance collaboration —
-              I&apos;m always excited to connect and explore new ideas.
+              Whether it&apos;s a research collab, a quick freelance project, or just an interesting idea you want to talk through — feel free to reach out.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <ButtonLink href="/contact" variant="primary" className="px-8 py-3.5 text-base">
