@@ -10,16 +10,18 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <div className="pb-16 pt-32">
-      <Section className="mb-16 text-center">
-        <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-          Research Portfolio
-        </h1>
-        <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted leading-relaxed">
-          A centralized showcase of my core academic interests, professional investigations, geospatial mapping portfolios, and organizational research activities.
-        </p>
+    <>
+      <Section>
+        <header className="mb-12 sm:mb-16 text-center">
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Research Portfolio
+          </h1>
+          <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
+            A centralized showcase of my core academic interests, professional investigations, geospatial mapping portfolios, and organizational research activities.
+          </p>
+        </header>
       </Section>
       <ResearchPageContent />
-    </div>
+    </>
   );
 }

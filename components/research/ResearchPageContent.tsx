@@ -3,7 +3,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, useMemo, useRef, useEffect } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { Section } from "@/components/Section";
 
 /* ------------------------------------------------------------------ */
@@ -58,7 +59,7 @@ const researchPositions = [
   },
 ];
 
-const rawMapImages = [
+const mapImages = [
   "/GIS_RS/LST 2.png",
   "/GIS_RS/LULC.png",
   "/GIS_RS/Layout.jpg",
@@ -76,59 +77,6 @@ const rawMapImages = [
 
 export function ResearchPageContent() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-
-  // Randomize map array strictly on mount to prevent hydration mismatch gaps
-  const mapImages = useMemo(() => {
-    return [...rawMapImages].sort(() => Math.random() - 0.5);
-  }, []);
-
-  const duplicatedMaps = [...mapImages, ...mapImages, ...mapImages];
-
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const isHovered = useRef(false);
-  const cardWidthRef = useRef(0);
-  const totalCards = mapImages.length; // use non-duplicated count for index logic
-
-  // Measure card width after mount
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const firstCard = el.querySelector("button");
-    if (firstCard) {
-      cardWidthRef.current = firstCard.getBoundingClientRect().width + 24; // 24 = gap
-    }
-  }, []);
-
-  // Scroll to currentIndex whenever it changes
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollTo({ left: currentIndex * cardWidthRef.current, behavior: "smooth" });
-  }, [currentIndex]);
-
-  // Auto-advance every 3 seconds unless hovered
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isHovered.current) {
-        setCurrentIndex((prev) => {
-          const next = prev + 1;
-          // Loop back when we reach the end of first copy
-          if (next >= totalCards) return 0;
-          return next;
-        });
-      }
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [totalCards]);
-
-  function goNext() {
-    setCurrentIndex((prev) => (prev + 1) % totalCards);
-  }
-
-  function goPrev() {
-    setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
-  }
 
   return (
     <div className="space-y-32 pb-24">
@@ -155,7 +103,7 @@ export function ResearchPageContent() {
                 src={interest.img}
                 alt={interest.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
+                className="object-cover transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-90 group-hover:saturate-150 group-hover:contrast-125"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
@@ -188,7 +136,12 @@ export function ResearchPageContent() {
               transition={{ delay: i * 0.15, duration: 0.6 }}
               className="flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-surface-elevated/40 shadow-2xl backdrop-blur-xl transition-all hover:border-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.15)] hover:-translate-y-1"
             >
-              <div className="relative h-64 w-full sm:h-72 border-b border-white/[0.05] bg-black/20">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block h-64 w-full sm:h-72 border-b border-white/[0.05] bg-black/20 overflow-hidden"
+              >
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -196,7 +149,7 @@ export function ResearchPageContent() {
                   className="object-cover transition-transform duration-700 hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              </div>
+              </a>
               <div className="flex flex-1 flex-col p-6 sm:p-8">
                 <h3 className="font-display text-xl font-bold text-ink leading-snug line-clamp-3">
                   {project.title}
@@ -247,85 +200,56 @@ export function ResearchPageContent() {
       </Section>
 
       {/* 4. GIS & RS Maps Gallery */}
-      <div className="w-full relative py-10 border-y border-white/[0.06] bg-surface-elevated/10">
-        <Section className="mb-8">
+      <Section>
+        <div className="mb-10 border-b border-white/[0.08] pb-6">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl text-center sm:text-left">
-            GIS & Remote Sensing Maps
+            GIS &amp; Remote Sensing Maps
           </h2>
-          <p className="mt-3 text-ink-muted text-lg text-center sm:text-left">A visual portfolio of exploratory mapping and geospatial visualizations.</p>
-        </Section>
-        
-        {/* Gallery track */}
-        <div className="relative">
-          {/* Fading edge overlays */}
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-12 sm:w-20 bg-gradient-to-r from-surface to-transparent" />
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 sm:w-20 bg-gradient-to-l from-surface to-transparent" />
+          <p className="mt-3 text-ink-muted text-lg text-center sm:text-left">
+            A visual portfolio of exploratory mapping and geospatial visualizations.
+          </p>
+        </div>
 
-          {/* Scrollable image strip */}
-          <div
-            ref={scrollRef}
-            className="flex gap-5 sm:gap-6 overflow-x-auto py-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            onMouseEnter={() => { isHovered.current = true; }}
-            onMouseLeave={() => { isHovered.current = false; }}
-          >
-            {duplicatedMaps.map((src, i) => (
-              <button
-                key={`${src}-${i}`}
+        {/* Masonry gallery grid */}
+        <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
+          {mapImages.map((src) => {
+            const alt = src.split("/").pop()?.replace(/\.(png|jpg|jpeg)$/i, "").replace(/[-_]/g, " ") ?? "GIS Map";
+            return (
+              <div
+                key={src}
+                className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 onClick={() => setLightboxSrc(src)}
-                className="relative h-44 sm:h-56 shrink-0 overflow-hidden rounded-xl shadow-xl shadow-black/20 ring-1 ring-white/[0.06] transition-all duration-300 hover:scale-[1.04] hover:z-20 cursor-zoom-in bg-surface-elevated/40"
               >
-                <img
-                  src={src}
-                  alt={`GIS Map ${i}`}
-                  className="h-full w-auto object-contain"
-                />
-              </button>
-            ))}
-          </div>
+                <div className="relative">
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Arrow controls — below the gallery */}
-        <div className="flex items-center justify-center gap-4 mt-4 pb-4">
-          <button
-            type="button"
-            onClick={goPrev}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-elevated border border-white/10 text-ink shadow-lg transition-all hover:bg-accent hover:text-surface hover:scale-110 active:scale-95"
-            aria-label="Previous image"
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/work"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[rgb(var(--accent)/0.12)] px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-surface shadow-inner shadow-white/5"
           >
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6" />
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </button>
-
-          {/* Dot indicators */}
-          <div className="flex items-center gap-2">
-            {mapImages.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrentIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === currentIndex
-                    ? "w-6 bg-accent"
-                    : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
-                aria-label={`Go to image ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={goNext}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-elevated border border-white/10 text-ink shadow-lg transition-all hover:bg-accent hover:text-surface hover:scale-110 active:scale-95"
-            aria-label="Next image"
-          >
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
+            View all GIS & Remote Sensing Maps
+          </Link>
         </div>
-      </div>
+      </Section>
 
       {/* 5. Research Positions */}
       <Section>
@@ -334,7 +258,7 @@ export function ResearchPageContent() {
             Research Positions
           </h2>
         </div>
-        <div className="mx-auto max-w-4xl space-y-6">
+        <div className="max-w-3xl space-y-6">
           {researchPositions.map((pos, i) => (
             <motion.div
               key={pos.org}
@@ -342,9 +266,9 @@ export function ResearchPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative flex flex-col sm:flex-row items-center gap-6 rounded-3xl border border-[rgb(var(--accent)/0.15)] bg-gradient-to-r from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] p-6 sm:p-8 shadow-2xl backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.4)] hover:shadow-[rgb(var(--accent)/0.1)]"
+              className="relative flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border border-[rgb(var(--accent)/0.15)] bg-gradient-to-r from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] p-5 sm:p-6 shadow-xl backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.4)] hover:shadow-[rgb(var(--accent)/0.1)]"
             >
-              <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white/10 p-2 shadow-inner ring-1 ring-white/[0.15] transition-transform hover:scale-110">
+              <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center transition-transform hover:scale-110">
                 <Image
                   src={pos.logo}
                   alt={pos.org}
@@ -353,15 +277,15 @@ export function ResearchPageContent() {
                   className="h-full w-full object-contain filter drop-shadow-md"
                 />
               </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="font-display text-2xl font-bold text-ink mb-1">
+              <div className="flex-1 text-left">
+                <h3 className="font-display text-xl font-bold text-ink mb-1">
                   {pos.org}
                 </h3>
-                <p className="text-lg font-medium text-accent">
+                <p className="text-base font-medium text-accent">
                   {pos.role}
                 </p>
-                <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-4">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-surface-elevated/80 px-4 py-1.5 text-sm font-medium text-ink-muted border border-white/5 shadow-sm">
+                <div className="mt-3 flex flex-wrap items-center justify-start gap-4">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-surface-elevated/80 px-3.5 py-1 text-sm font-medium text-ink-muted border border-white/5 shadow-sm">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                     {pos.period}
                   </span>

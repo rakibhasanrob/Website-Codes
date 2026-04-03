@@ -13,10 +13,14 @@ export default function WorkPage() {
   return (
     <>
       <Section>
-        <PageHeader
-          title="Projects"
-          description="Explore my work across data animation, interactive dashboards, GIS mapping, and research visualizations."
-        />
+        <header className="mb-12 sm:mb-16 text-center">
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Projects
+          </h1>
+          <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
+            Explore my work across data animation, interactive dashboards, GIS mapping, and research visualizations.
+          </p>
+        </header>
       </Section>
       <ProjectsContent />
     </>

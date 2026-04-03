@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -46,11 +47,29 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
   );
 }
 
-/* ─── Discuss Button ────────────────────────────────────── */
-function DiscussButton() {
+/* ─── Action Buttons ────────────────────────────────────── */
+function ActionButtons({
+  hasMore,
+  showAll,
+  onToggleShow,
+  totalCount,
+}: {
+  hasMore?: boolean;
+  showAll?: boolean;
+  onToggleShow?: () => void;
+  totalCount?: number;
+}) {
   return (
-    <div className="mt-10 flex justify-center">
-      <ButtonLink href="/contact" variant="outline" className="gap-2.5">
+    <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+      {hasMore && onToggleShow && (
+        <button
+          onClick={onToggleShow}
+          className="inline-flex items-center gap-2 rounded-xl bg-surface-elevated/60 px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-surface-elevated hover:-translate-y-0.5 border border-white/10 hover:border-accent/40 shadow-lg shadow-black/10 hover:shadow-accent/10 hover:text-accent"
+        >
+          {showAll ? "Collapse" : `View All (${totalCount})`}
+        </button>
+      )}
+      <ButtonLink href="/contact" variant="outline" className="gap-2.5 px-6 py-2.5 text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 hover:bg-surface-elevated/20">
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
         </svg>
@@ -155,54 +174,103 @@ function DashboardCard({
   );
 }
 
+/* ─── Dashboard Grid ────────────────────────────────────── */
+function DashboardGrid({
+  projects,
+  onImageClick,
+}: {
+  projects: typeof dashboardProjects;
+  onImageClick: (src: string, alt: string) => void;
+}) {
+  const [showAll, setShowAll] = useState(false);
+  const displayed = showAll ? projects : projects.slice(0, 6);
+
+  return (
+    <>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {displayed.map((p) => (
+          <DashboardCard key={p.title} project={p} onImageClick={onImageClick} />
+        ))}
+      </div>
+      <ActionButtons
+        hasMore={projects.length > 6}
+        showAll={showAll}
+        onToggleShow={() => setShowAll(!showAll)}
+        totalCount={projects.length}
+      />
+    </>
+  );
+}
+
 /* ─── Gallery Grid ──────────────────────────────────────── */
 function GalleryGrid({
   images,
   folder,
+  category,
   onImageClick,
 }: {
   images: string[];
   folder: string;
+  category: string;
   onImageClick: (src: string, alt: string) => void;
 }) {
+  const [showAll, setShowAll] = useState(false);
+  const defaultCount = (category === "business-visuals" || category === "research-visuals") ? 8 : 6;
+  const displayedImages = showAll ? images : images.slice(0, defaultCount);
+
   return (
-    <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-      {images.map((img) => {
-        const src = `${folder}/${img}`;
-        const alt = img.replace(/\.(png|jpg|jpeg)$/i, "").replace(/[-_]/g, " ");
-        return (
-          <div
-            key={img}
-            className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
-            onClick={() => onImageClick(src, alt)}
-          >
-            <div className="relative">
-              <Image
-                src={src}
-                alt={alt}
-                width={600}
-                height={400}
-                className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
-                </svg>
+    <>
+      <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
+        {displayedImages.map((img) => {
+          const src = `${folder}/${img}`;
+          const alt = img.replace(/\.(png|jpg|jpeg)$/i, "").replace(/[-_]/g, " ");
+          return (
+            <div
+              key={img}
+              className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+              onClick={() => onImageClick(src, alt)}
+            >
+              <div className="relative">
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={600}
+                  height={400}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+      <ActionButtons
+        hasMore={images.length > defaultCount}
+        showAll={showAll}
+        onToggleShow={() => setShowAll(!showAll)}
+        totalCount={images.length}
+      />
+    </>
   );
 }
 
 /* ─── Main Component ────────────────────────────────────── */
 
-export function ProjectsContent() {
-  const [active, setActive] = useState<CategoryKey>("all");
+function ProjectsContentInner() {
+  const searchParams = useSearchParams();
+  const initCategory = (searchParams.get("category") as CategoryKey) || "all";
+  const [active, setActive] = useState<CategoryKey>(initCategory);
+
+  useEffect(() => {
+    const cat = searchParams.get("category") as CategoryKey;
+    if (cat) setActive(cat);
+  }, [searchParams]);
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
 
   const openLightbox = useCallback((src: string, alt: string) => {
@@ -247,32 +315,18 @@ export function ProjectsContent() {
                 <Section className="mt-16 sm:mt-20">
                   <SectionTitle title={section.title} />
 
-                  {/* Promo Video */}
-                  <div className="mx-auto mb-12 max-w-4xl overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-elevated/60 shadow-2xl shadow-black/20 backdrop-blur-md">
-                    <div className="relative aspect-video bg-black">
-                      <video
-                        src={section.promoVideo}
-                        className="h-full w-full object-cover"
-                        controls
-                        preload="metadata"
-                        playsInline
-                      />
-                    </div>
-                    <div className="px-6 py-4 text-center">
-                      <p className="text-sm text-ink-muted">
-                        Watch an overview of my {section.title.toLowerCase()} work
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Project Cards */}
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <VideoCard 
+                      title={`${section.title} Overview`} 
+                      video={section.promoVideo} 
+                      description={`Watch an overview of my ${section.title.toLowerCase()} work`} 
+                    />
                     {section.projects.map((p) => (
                       <VideoCard key={p.title} {...p} />
                     ))}
                   </div>
 
-                  <DiscussButton />
+                  <ActionButtons />
                 </Section>
               </motion.div>
             )
@@ -292,12 +346,7 @@ export function ProjectsContent() {
                 title="Interactive Dashboards"
                 subtitle="Power BI and web dashboards built for real-world business intelligence."
               />
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {dashboardProjects.map((p) => (
-                  <DashboardCard key={p.title} project={p} onImageClick={openLightbox} />
-                ))}
-              </div>
-              <DiscussButton />
+              <DashboardGrid projects={dashboardProjects} onImageClick={openLightbox} />
             </Section>
           </motion.div>
         )}
@@ -315,8 +364,7 @@ export function ProjectsContent() {
               >
                 <Section className="mt-16 sm:mt-20">
                   <SectionTitle title={section.title} subtitle={section.subtitle} />
-                  <GalleryGrid images={section.images} folder={section.folder} onImageClick={openLightbox} />
-                  <DiscussButton />
+                  <GalleryGrid images={section.images} folder={section.folder} category={section.category} onImageClick={openLightbox} />
                 </Section>
               </motion.div>
             )
@@ -344,8 +392,8 @@ export function ProjectsContent() {
               <ButtonLink href="/about#education" variant="primary" className="px-8 py-3.5 text-base">
                 View My Skills &amp; Certifications
               </ButtonLink>
-              <ButtonLink href="/contact" variant="outline" className="px-8 py-3.5 text-base">
-                Get in Touch
+              <ButtonLink href="/collaboration" variant="outline" className="px-8 py-3.5 text-base">
+                Collaboration
               </ButtonLink>
             </div>
           </div>
@@ -357,5 +405,13 @@ export function ProjectsContent() {
         {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
     </>
+  );
+}
+
+export function ProjectsContent() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <ProjectsContentInner />
+    </Suspense>
   );
 }

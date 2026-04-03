@@ -13,10 +13,14 @@ export default function CollaborationPage() {
   return (
     <>
       <Section>
-        <PageHeader
-          title="Let's Collaborate"
-          description="Open to partnerships in data analytics, geospatial science, and research-driven projects with researchers, students, and organizations."
-        />
+        <header className="mb-10 mt-8 sm:mb-14 sm:mt-12 text-center">
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Let&apos;s Collaborate
+          </h1>
+          <p className="mt-4 mx-auto max-w-2xl text-lg text-ink-muted text-balance">
+            Open to partnerships in data analytics, geospatial science, and research-driven projects with researchers, students, and organizations.
+          </p>
+        </header>
       </Section>
       <CollaborationContent />
     </>
