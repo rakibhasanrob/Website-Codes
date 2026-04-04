@@ -64,17 +64,17 @@ function ActionButtons({
       {hasMore && onToggleShow && (
         <button
           onClick={onToggleShow}
-          className="inline-flex items-center gap-2 rounded-xl bg-surface-elevated/60 px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-surface-elevated hover:-translate-y-0.5 border border-white/10 hover:border-accent/40 shadow-lg shadow-black/10 hover:shadow-accent/10 hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-xl bg-ink text-surface px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-accent hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5"
         >
           {showAll ? "Collapse" : `View All (${totalCount})`}
         </button>
       )}
-      <ButtonLink href="/contact" variant="outline" className="gap-2.5 px-6 py-2.5 text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 hover:bg-surface-elevated/20">
+      <Link href="/contact" className="inline-flex items-center gap-2.5 rounded-xl bg-ink text-surface px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-accent hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5">
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
         </svg>
         Discuss a Similar Project
-      </ButtonLink>
+      </Link>
     </div>
   );
 }
@@ -300,75 +300,79 @@ function ProjectsContentInner() {
         </div>
       </Section>
 
-      {/* ═══ VIDEO SECTIONS (Data Animation & Map Animation) ═══ */}
+      {/* ═══ ORDERED SECTIONS ═══ */}
       <AnimatePresence mode="popLayout">
-        {videoSections.map(
-          (section) =>
-            isVisible(section.category) && (
+        {["dashboards", "gis-maps", "web-maps", "data-animation", "map-animation", "research-visuals", "business-visuals"].map((cat) => {
+          if (!isVisible(cat as CategoryKey)) return null;
+
+          if (cat === "dashboards") {
+            return (
               <motion.div
-                key={section.category}
+                key="dashboards"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
               >
                 <Section className="mt-16 sm:mt-20">
-                  <SectionTitle title={section.title} />
+                  <SectionTitle
+                    title="Interactive Dashboards"
+                    subtitle="Power BI and web dashboards built for real-world business intelligence."
+                  />
+                  <DashboardGrid projects={dashboardProjects} onImageClick={openLightbox} />
+                </Section>
+              </motion.div>
+            );
+          }
 
+          const videoSec = videoSections.find((v) => v.category === cat);
+          if (videoSec) {
+            return (
+              <motion.div
+                key={videoSec.category}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Section className="mt-16 sm:mt-20">
+                  <SectionTitle title={videoSec.title} />
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     <VideoCard 
-                      title={`${section.title} Overview`} 
-                      video={section.promoVideo} 
-                      description={`Watch an overview of my ${section.title.toLowerCase()} work`} 
+                      title={`${videoSec.title} Overview`} 
+                      video={videoSec.promoVideo} 
+                      description={`Watch an overview of my ${videoSec.title.toLowerCase()} work`} 
                     />
-                    {section.projects.map((p) => (
+                    {videoSec.projects.map((p) => (
                       <VideoCard key={p.title} {...p} />
                     ))}
                   </div>
-
                   <ActionButtons />
                 </Section>
               </motion.div>
-            )
-        )}
+            );
+          }
 
-        {/* ═══ DASHBOARDS ═══ */}
-        {isVisible("dashboards") && (
-          <motion.div
-            key="dashboards"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Section className="mt-16 sm:mt-20">
-              <SectionTitle
-                title="Interactive Dashboards"
-                subtitle="Power BI and web dashboards built for real-world business intelligence."
-              />
-              <DashboardGrid projects={dashboardProjects} onImageClick={openLightbox} />
-            </Section>
-          </motion.div>
-        )}
-
-        {/* ═══ GALLERY SECTIONS ═══ */}
-        {gallerySections.map(
-          (section) =>
-            isVisible(section.category) && (
+          const gallerySec = gallerySections.find((g) => g.category === cat);
+          if (gallerySec) {
+            return (
               <motion.div
-                key={section.category}
+                key={gallerySec.category}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
               >
                 <Section className="mt-16 sm:mt-20">
-                  <SectionTitle title={section.title} subtitle={section.subtitle} />
-                  <GalleryGrid images={section.images} folder={section.folder} category={section.category} onImageClick={openLightbox} />
+                  <SectionTitle title={gallerySec.title} subtitle={gallerySec.subtitle} />
+                  <GalleryGrid images={gallerySec.images} folder={gallerySec.folder} category={gallerySec.category} onImageClick={openLightbox} />
                 </Section>
               </motion.div>
-            )
-        )}
+            );
+          }
+
+          return null;
+        })}
       </AnimatePresence>
 
       {/* ═══ BOTTOM CTA ═══ */}

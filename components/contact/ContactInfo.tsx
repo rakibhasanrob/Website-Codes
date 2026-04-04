@@ -145,42 +145,6 @@ export function ContactInfo() {
         </div>
       </motion.div>
 
-      {/* ── Social Media ─────────────────────────────── */}
-      <motion.div
-        variants={fadeUp}
-        className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 p-6 shadow-xl shadow-black/20 backdrop-blur-md"
-      >
-        <h2 className="font-display text-lg font-semibold text-ink flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-            </svg>
-          </span>
-          Connect on Social
-        </h2>
-
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          {socialLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-surface/40 px-4 py-3 text-ink-muted transition-all duration-300 ${item.color} ${item.hoverBg}`}
-            >
-              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-elevated/80 text-ink-muted transition-colors ${item.iconColor}`}>
-                <svg viewBox="0 0 24 24" className="h-4.5 w-4.5 h-[18px] w-[18px]" aria-hidden>
-                  {item.icon}
-                </svg>
-              </span>
-              <span className="text-sm font-medium text-ink transition-colors group-hover:text-ink">
-                {item.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </motion.div>
-
       {/* ── Fiverr CTA ───────────────────────────────── */}
       <motion.div
         variants={fadeUp}
@@ -232,6 +196,42 @@ export function ContactInfo() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>
+        </div>
+      </motion.div>
+
+      {/* ── Social Media ─────────────────────────────── */}
+      <motion.div
+        variants={fadeUp}
+        className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 p-6 shadow-xl shadow-black/20 backdrop-blur-md"
+      >
+        <h2 className="font-display text-lg font-semibold text-ink flex items-center gap-2.5">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </span>
+          Connect on Social
+        </h2>
+
+        <div className="mt-5 grid grid-cols-2 gap-3">
+          {socialLinks.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-surface/40 px-4 py-3 text-ink-muted transition-all duration-300 ${item.color} ${item.hoverBg}`}
+            >
+              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-elevated/80 text-ink-muted transition-colors ${item.iconColor}`}>
+                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden>
+                  {item.icon}
+                </svg>
+              </span>
+              <span className="text-sm font-medium text-ink transition-colors group-hover:text-ink">
+                {item.label}
+              </span>
+            </Link>
+          ))}
         </div>
       </motion.div>
     </motion.div>

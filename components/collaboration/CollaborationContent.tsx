@@ -129,10 +129,10 @@ export function CollaborationContent() {
                   </p>
                   <Link
                     href={item.link}
-                    className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/40 bg-black/40 px-4 py-2 text-sm font-semibold text-accent backdrop-blur-sm transition-all hover:bg-accent/20 hover:text-white"
+                    className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent-dim hover:shadow-xl hover:shadow-accent/30"
                   >
                     View Related Projects
-                    <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </Link>
@@ -165,9 +165,9 @@ export function CollaborationContent() {
             variants={fadeIn}
             className="relative mt-8 overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-elevated/40 py-10 shadow-xl backdrop-blur-md"
           >
-            {/* Decorative edge gradients */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[rgb(30,30,30,0.8)] to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[rgb(30,30,30,0.8)] to-transparent z-10" />
+            {/* Decorative edge gradients using CSS variables to adapt to light/dark mode */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[rgba(var(--surface-elevated),0.95)] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[rgba(var(--surface-elevated),0.95)] to-transparent z-10" />
 
             <div className="flex w-full overflow-hidden">
               <motion.div
@@ -212,12 +212,12 @@ export function CollaborationContent() {
               Whether it&apos;s a research collab, a quick freelance project, or just an interesting idea you want to talk through — feel free to reach out.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <ButtonLink href="/contact" variant="primary" className="px-8 py-3.5 text-base">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-medium text-surface shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent-dim hover:shadow-xl hover:shadow-accent/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                 Get in Touch
-              </ButtonLink>
-              <ButtonLink href="/about" variant="outline" className="px-8 py-3.5 text-base">
+              </Link>
+              <Link href="/about" className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-3.5 text-base font-medium text-surface transition-all hover:-translate-y-0.5 hover:bg-accent hover:shadow-lg hover:shadow-accent/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                 Know more about me
-              </ButtonLink>
+              </Link>
             </div>
           </div>
         </motion.div>
