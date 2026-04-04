@@ -15,6 +15,16 @@ const stats = [
     ),
   },
   {
+    id: 5,
+    label: "Experience",
+    value: "3+ Years",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+      </svg>
+    ),
+  },
+  {
     id: 2,
     label: "Certifications Earned",
     value: "14+",
@@ -49,7 +59,7 @@ const stats = [
 export function QuickSnapshot() {
   return (
     <Section className="mt-16 sm:mt-24">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.id}
@@ -58,14 +68,14 @@ export function QuickSnapshot() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
             whileHover={{ y: -5 }}
-            className="group relative flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-surface-elevated/40 p-5 shadow-lg shadow-black/10 backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.3)] hover:bg-surface-elevated/70 hover:shadow-[0_0_20px_rgba(56,189,248,0.1)]"
+            className="group relative flex w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-1rem)] min-w-[200px] items-center gap-4 rounded-2xl border border-white/[0.08] bg-surface-elevated/40 p-4 shadow-lg shadow-black/10 backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.3)] hover:bg-surface-elevated/70 hover:shadow-[0_0_20px_rgba(var(--accent),0.1)]"
           >
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent)/0.12)] text-accent shadow-inner shadow-white/5 transition-transform duration-300 group-hover:scale-110 group-hover:bg-[rgb(var(--accent)/0.2)]">
               {stat.icon}
             </div>
             <div>
               <div className="text-xl font-bold text-ink">{stat.value}</div>
-              <div className="text-sm text-ink-muted leading-snug mt-0.5 max-w-[150px]">{stat.label}</div>
+              <div className="text-sm text-ink-muted leading-tight mt-0.5 max-w-[120px]">{stat.label}</div>
             </div>
           </motion.div>
         ))}

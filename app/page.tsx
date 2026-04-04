@@ -7,6 +7,11 @@ import { QuickSnapshot } from "@/components/home/QuickSnapshot";
 import { TopResearch } from "@/components/home/TopResearch";
 import { RecentWork } from "@/components/home/RecentWork";
 import { SkillsDock } from "@/components/home/SkillsDock";
+import { HomeSkills } from "@/components/home/HomeSkills";
+import { HomeCertifications } from "@/components/home/HomeCertifications";
+import { HomeResearchInterests } from "@/components/home/HomeResearchInterests";
+import { HomeActivities } from "@/components/home/HomeActivities";
+import { HomeCollaboration } from "@/components/home/HomeCollaboration";
 import { CallToAction } from "@/components/home/CallToAction";
 
 export default function HomePage() {
@@ -25,6 +30,11 @@ export default function HomePage() {
       <TopResearch />
       <RecentWork />
       <SkillsDock />
+      <HomeSkills />
+      <HomeCertifications />
+      <HomeResearchInterests />
+      <HomeActivities />
+      <HomeCollaboration />
       <CallToAction />
     </>
   );

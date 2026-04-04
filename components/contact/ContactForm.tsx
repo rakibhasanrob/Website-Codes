@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";

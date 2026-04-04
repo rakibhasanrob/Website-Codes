@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Section } from "@/components/Section";
-import { ButtonLink } from "@/components/ui/Button";
 
 /* ─── animation helpers ─────────────────────────────── */
 const fadeUp = {
