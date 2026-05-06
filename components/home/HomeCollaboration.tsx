@@ -56,8 +56,8 @@ export function HomeCollaboration() {
 
   return (
     <Section className="mt-20 sm:mt-28 mb-10">
-      <div className="mb-10 text-center sm:text-left border-b border-white/[0.08] pb-6">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      <div className="mb-10 text-center sm:text-left border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           Ways to Collaborate
         </h2>
       </div>
@@ -72,7 +72,7 @@ export function HomeCollaboration() {
               key={item.title}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg shadow-black/10 border border-white/5"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer border border-[rgb(var(--ink-muted)/0.1)]"
               initial={false}
               animate={{
                 flex: isHovered ? 4 : isPassive ? 0.8 : 1,
@@ -91,7 +91,7 @@ export function HomeCollaboration() {
               <div className={`absolute inset-0 flex flex-col justify-end p-4 sm:p-5 ${isHovered ? "min-w-[200px]" : "min-w-0"}`}>
                 <div className={`transition-all duration-300 sm:w-max ${isHovered ? "translate-y-0" : "translate-y-2 max-w-full"}`}>
                   <h3 
-                    className={`font-display font-bold text-white shadow-black drop-shadow-md transition-all duration-300 ${isHovered ? "text-xl sm:text-2xl mb-2 whitespace-normal" : "text-sm sm:text-base truncate mb-0 opacity-80"} w-full`}
+                    className={`font-bold text-white shadow-black drop-shadow-md transition-all duration-300 ${isHovered ? "text-xl sm:text-2xl mb-2 whitespace-normal" : "text-sm sm:text-base truncate mb-0 opacity-80"} w-full`}
                     style={typeof window !== 'undefined' && window.innerWidth >= 640 && !isHovered ? { writingMode: 'vertical-rl', transform: 'rotate(180deg)' } : {}}
                   >
                     {isHovered ? item.fullTitle : item.title}
@@ -108,7 +108,7 @@ export function HomeCollaboration() {
                     </p>
                     <Link
                       href={item.link}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-accent/90 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-accent"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold text-surface transition-colors hover:bg-accent-dim"
                     >
                       View Projects
                       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -129,7 +129,7 @@ export function HomeCollaboration() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-surface-elevated/30 px-6 py-8 backdrop-blur-sm sm:px-10 flex flex-col md:flex-row items-center justify-between gap-6"
+        className="relative overflow-hidden rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/30 px-6 py-8 backdrop-blur-sm sm:px-10 flex flex-col md:flex-row items-center justify-between gap-6"
       >
         <div className="flex items-center gap-6 text-center md:text-left flex-1">
           {/* Subtle Fiverr Logo */}
@@ -140,7 +140,7 @@ export function HomeCollaboration() {
             </svg>
           </div>
           <div>
-            <h3 className="font-display text-xl font-bold text-ink mb-1.5 flex items-center gap-2 justify-center md:justify-start">
+            <h3 className="text-xl font-bold text-ink mb-1.5 flex items-center gap-2 justify-center md:justify-start">
               Work With Me on Fiverr
               <span className="sm:hidden text-[#1dbf73]">
                 <svg viewBox="0 0 100 100" className="w-5 h-5 inline" fill="currentColor">
@@ -160,13 +160,13 @@ export function HomeCollaboration() {
             href="https://www.fiverr.com/rakibhasanrob" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-[#1dbf73] px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-[#19a463] hover:shadow-[0_0_15px_rgba(29,191,115,0.4)]"
+            className="inline-flex items-center justify-center rounded-full bg-[#1dbf73] px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-[#19a463]"
           >
             Fiverr Profile
           </a>
           <Link 
             href="/contact" 
-            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-surface-elevated/80 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-white/5 hover:border-white/20"
+            className="inline-flex items-center justify-center rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-surface-elevated hover:border-accent/30"
           >
             Direct Contact
           </Link>

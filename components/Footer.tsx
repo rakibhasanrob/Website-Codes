@@ -51,7 +51,7 @@ const socialLinks = [
   {
     label: "Email",
     href: `mailto:${site.email}`,
-    hoverClass: "hover:text-[#2563EB]",
+    hoverClass: "hover:text-accent",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" fill="none" stroke="currentColor" strokeWidth="1.8" />
     ),
@@ -64,7 +64,7 @@ import { ButtonLink } from "@/components/ui/Button";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 border-t border-white/[0.06] bg-surface-elevated/30">
+    <footer className="mt-24 border-t border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/30">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-10 px-4 py-12 sm:flex-row sm:items-start sm:px-6 lg:px-8">
         
         {/* Left Side: Favicon and Copyright */}
@@ -75,7 +75,7 @@ export function Footer() {
               alt="Rakib Hasan Logo" 
               width={28} 
               height={28} 
-              className="rounded bg-surface-elevated shadow-sm ring-1 ring-white/10"
+              className="rounded bg-surface-elevated shadow-sm ring-1 ring-[rgb(var(--ink-muted)/0.1)]"
             />
             <p className="text-sm font-medium text-ink-muted">
               © {year} Rakib Hasan. All rights reserved.
@@ -88,7 +88,7 @@ export function Footer() {
 
         {/* Right Side: Contact / Socials */}
         <div className="flex flex-col items-center gap-6 sm:items-end">
-          <ButtonLink href="/contact" variant="primary" className="px-6 py-2.5 text-sm font-semibold shadow-lg shadow-[rgb(var(--accent)/0.15)]">
+          <ButtonLink href="/contact" variant="primary" className="px-6 py-2.5 text-sm font-semibold">
             Contact Me
           </ButtonLink>
           
@@ -97,7 +97,7 @@ export function Footer() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`group inline-flex h-8 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
+                className={`group inline-flex h-8 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
                 target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                 aria-label={item.label}

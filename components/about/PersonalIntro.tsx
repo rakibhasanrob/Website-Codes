@@ -14,7 +14,7 @@ export function PersonalIntro() {
         transition={{ duration: 0.5 }}
         className="mb-10"
       >
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           Who I Am
         </h2>
       </motion.div>
@@ -33,7 +33,7 @@ export function PersonalIntro() {
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 220, damping: 20 }}
           >
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] shadow-2xl shadow-accent/10 transition-shadow duration-300 hover:shadow-accent/25 hover:border-accent/20">
+            <div className="relative overflow-hidden rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] shadow-sm transition-shadow duration-300 hover:shadow-accent/25 hover:border-accent/20">
               {/* Decorative gradient overlay */}
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-surface/80 via-transparent to-transparent" />
               {/* Accent glow behind image */}
@@ -49,7 +49,7 @@ export function PersonalIntro() {
             </div>
             {/* Name tag below photo */}
             <div className="mt-4 text-center lg:text-left">
-              <p className="font-display text-lg font-semibold text-ink">
+              <p className="text-lg font-semibold text-ink">
                 Rakib Hasan
               </p>
               <p className="text-sm text-ink-muted">
@@ -65,7 +65,7 @@ export function PersonalIntro() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 p-6 sm:p-8 shadow-xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:border-accent/20 hover:shadow-accent/10"
+          className="rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 p-6 sm:p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:shadow-accent/10"
         >
           <div className="space-y-5 text-[0.95rem] leading-relaxed text-ink-muted">
             <p>

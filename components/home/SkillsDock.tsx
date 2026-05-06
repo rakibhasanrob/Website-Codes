@@ -139,7 +139,7 @@ export function SkillsDock() {
     <Section className="mt-20 sm:mt-28 mb-20 z-10 relative">
       {/* Centered Heading */}
       <div className="mb-14 text-center">
-        <h2 className="font-display text-3xl font-semibold text-ink">Skills & Tools</h2>
+        <h2 className="text-3xl font-semibold text-ink">Skills & Tools</h2>
 
       </div>
 
@@ -150,13 +150,13 @@ export function SkillsDock() {
         transition={{ duration: 0.6 }}
         className="flex justify-center" 
       >
-        <div className="relative flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-3xl border border-white/[0.1] bg-surface-elevated/40 px-3 py-3 shadow-2xl shadow-black/30 backdrop-blur-xl sm:px-5">
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+        <div className="relative flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-3xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 px-3 py-3 backdrop-blur-sm sm:px-5">
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-[rgb(var(--ink-muted)/0.03)] to-transparent pointer-events-none" />
           
           {mergedDock.map((item, index) => {
             // Divider
             if (item.isDivider) {
-              return <div key={index} className="mx-1 h-8 w-[1.5px] rounded-full bg-white/10 sm:h-10" />;
+              return <div key={index} className="mx-1 h-8 w-[1.5px] rounded-full bg-[rgb(var(--ink-muted)/0.15)] sm:h-10" />;
             }
 
             const isLinkCard = item.isLink;
@@ -168,7 +168,7 @@ export function SkillsDock() {
                 className={`group relative flex h-10 w-10 sm:h-12 sm:w-12 cursor-pointer items-center justify-center rounded-xl sm:rounded-2xl transition-all duration-100 hover:shadow-2xl ${
                   isLinkCard
                     ? "bg-accent/10 text-accent ring-1 ring-accent"
-                    : "bg-surface-elevated text-ink ring-1 ring-white/[0.15] hover:shadow-[rgb(var(--accent)/0.3)] shadow-inner"
+                    : "bg-surface-elevated text-ink ring-1 ring-[rgb(var(--ink-muted)/0.12)] hover:shadow-accent/20 shadow-inner"
                 }`}
               >
                 {/* Responsive padding inside icon wrappers for non-buttons */}
@@ -177,7 +177,7 @@ export function SkillsDock() {
                 </div>
                 
                 {/* Tooltip */}
-                <div className={`pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 scale-0 whitespace-nowrap rounded-md px-3 py-1 text-xs font-semibold shadow-xl ring-1 ring-white/10 transition-all duration-150 group-hover:scale-100 backdrop-blur-md ${isLinkCard ? "bg-accent text-surface" : "bg-surface-elevated/95 text-ink"}`}>
+                <div className={`pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 scale-0 whitespace-nowrap rounded-md px-3 py-1 text-xs font-semibold shadow-xl ring-1 ring-white/10 transition-all duration-150 group-hover:scale-100 backdrop-blur-sm ${isLinkCard ? "bg-accent text-surface" : "bg-surface-elevated/95 text-ink"}`}>
                   {item.name}
                   <div className={`absolute left-1/2 -bottom-1 h-2 w-2 -translate-x-1/2 rotate-45 ring-1 ring-white/10 border-t-0 border-l-0 ${isLinkCard ? "bg-accent" : "bg-surface-elevated/95"}`} />
                 </div>

@@ -89,15 +89,15 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[rgb(var(--ink-muted)/0.2)] bg-surface/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-[rgb(var(--ink-muted)/0.12)] bg-surface/90 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink"
         >
           <Image src="/favicon.png" alt="Rakib Hasan logo" width={24} height={24} className="h-6 w-6 rounded-sm" />
           {site.name}
-          <span className="ml-1.5 text-ink-muted font-sans text-sm font-normal">
+          <span className="ml-1.5 text-ink-muted text-sm font-normal">
             · {site.title}
           </span>
         </Link>
@@ -108,13 +108,13 @@ export function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="group inline-flex h-10 items-center gap-2 rounded-full border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/70 px-2 text-sm font-medium text-ink transition hover:border-accent/40"
+            className="group inline-flex h-10 items-center gap-2 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/70 px-2 text-sm font-medium text-ink transition hover:border-accent/40"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            <span className="relative inline-flex h-6 w-11 items-center rounded-full bg-[rgb(var(--ink-muted)/0.35)] transition-colors group-hover:bg-[rgb(var(--accent)/0.35)]">
+            <span className="relative inline-flex h-6 w-11 items-center rounded-full bg-[rgb(var(--ink-muted)/0.25)] transition-colors group-hover:bg-accent/30">
               <span
-                className={`absolute top-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-surface text-ink shadow transition-transform ${
+                className={`absolute top-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-surface text-ink shadow-sm transition-transform ${
                   theme === "dark" ? "translate-x-0.5" : "translate-x-5"
                 }`}
               >
@@ -145,7 +145,7 @@ export function Header() {
           </button>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated/60 text-ink md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/60 text-ink md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -181,7 +181,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t border-[rgb(var(--ink-muted)/0.2)] bg-surface/95 backdrop-blur-md md:hidden"
+            className="border-t border-[rgb(var(--ink-muted)/0.12)] bg-surface/95 backdrop-blur-sm md:hidden"
           >
             <NavLinks
               onNavigate={() => setOpen(false)}

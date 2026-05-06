@@ -2,24 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Dark mode (default) ───────────────────────────── */
 :root {
-  --surface: 10 10 14;
-  --surface-elevated: 22 22 30;
-  --ink: 248 250 252;
-  --ink-muted: 203 213 225;
-  --accent: 56 189 248;
-  --accent-dim: 14 165 233;
-  --fx-particle: 255 255 255;
+  --surface: 10 10 10;
+  --surface-elevated: 22 24 22;
+  --ink: 240 240 240;
+  --ink-muted: 153 153 153;
+  --accent: 142 165 140;        /* Sage #8EA58C */
+  --accent-dim: 112 135 110;    /* darker Sage */
+  --fx-particle: 142 165 140;
 }
 
+/* ── Light mode ────────────────────────────────────── */
 html.light {
-  --surface: 247 250 252;
-  --surface-elevated: 236 244 252;
-  --ink: 15 23 42;
-  --ink-muted: 51 65 85;
-  --accent: 37 99 235;
-  --accent-dim: 29 78 216;
-  --fx-particle: 148 163 184;
+  --surface: 255 255 255;
+  --surface-elevated: 245 247 245;
+  --ink: 26 26 26;
+  --ink-muted: 107 107 107;
+  --accent: 115 138 110;        /* Moss #738A6E */
+  --accent-dim: 95 117 89;      /* darker Moss */
+  --fx-particle: 115 138 110;
 }
 
 html {
@@ -29,17 +31,10 @@ html {
 
 body {
   @apply bg-surface text-ink antialiased;
-  background-image: radial-gradient(
-      ellipse 120% 80% at 50% -30%,
-      rgb(var(--accent) / 0.12),
-      transparent
-    ),
-    radial-gradient(ellipse 60% 40% at 100% 50%, rgb(var(--accent) / 0.06), transparent);
-  background-attachment: fixed;
 }
 
 ::selection {
-  background: rgb(var(--accent) / 0.35);
+  background: rgb(var(--accent) / 0.25);
   color: rgb(var(--ink));
 }
 

@@ -52,13 +52,13 @@ export function HomeSkills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="group rounded-2xl border border-white/[0.08] bg-surface-elevated/30 p-6 backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.4)] hover:bg-surface-elevated/60 hover:shadow-xl hover:shadow-[0_0_20px_rgba(var(--accent),0.1)] hover:-translate-y-1"
+            className="group rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/30 p-6 backdrop-blur-sm transition-all hover:border-accent/40 hover:bg-surface-elevated/60 hover:-translate-y-1"
           >
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--accent)/0.12)] text-accent transition-transform duration-300 group-hover:scale-110 group-hover:bg-[rgb(var(--accent)/0.2)]">
                 {group.icon}
               </div>
-              <h3 className="font-display text-lg font-semibold text-ink transition-colors group-hover:text-accent">
+              <h3 className="text-lg font-semibold text-ink transition-colors group-hover:text-accent">
                 {group.label}
               </h3>
             </div>
@@ -66,7 +66,7 @@ export function HomeSkills() {
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1.5 text-sm font-medium text-ink-muted transition-all duration-300 hover:border-[rgb(var(--accent)/0.4)] hover:bg-[rgb(var(--accent)/0.05)] hover:text-ink hover:scale-105"
+                  className="rounded-full border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/80 px-3 py-1.5 text-sm font-medium text-ink-muted transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 hover:text-ink"
                 >
                   {item}
                 </span>

@@ -15,7 +15,7 @@ export function PortfolioGrid({ items, basePath }: PortfolioGridProps) {
         <li key={item.slug}>
           <Link href={`${basePath}/${item.slug}`} className="group block h-full">
             <Card className="flex h-full flex-col transition group-hover:border-accent/25 group-hover:bg-surface-elevated/80">
-              <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl bg-gradient-to-br from-accent/20 to-surface-elevated ring-1 ring-white/5">
+              <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl bg-gradient-to-br from-accent/15 to-surface-elevated ring-1 ring-[rgb(var(--ink-muted)/0.1)]">
                 {item.image ? (
                   <Image
                     src={item.image}
@@ -28,13 +28,13 @@ export function PortfolioGrid({ items, basePath }: PortfolioGridProps) {
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs text-ink-muted">
                 {item.year ? (
-                  <span className="rounded-md bg-white/5 px-2 py-0.5">{item.year}</span>
+                  <span className="rounded-md bg-surface-elevated px-2 py-0.5">{item.year}</span>
                 ) : null}
                 {item.role ? (
-                  <span className="rounded-md bg-white/5 px-2 py-0.5">{item.role}</span>
+                  <span className="rounded-md bg-surface-elevated px-2 py-0.5">{item.role}</span>
                 ) : null}
               </div>
-              <h2 className="mt-3 font-display text-xl font-semibold text-ink group-hover:text-accent">
+              <h2 className="mt-3 text-xl font-semibold text-ink group-hover:text-accent">
                 {item.title}
               </h2>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
@@ -44,7 +44,7 @@ export function PortfolioGrid({ items, basePath }: PortfolioGridProps) {
                 {item.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="rounded-full border border-white/10 bg-surface/80 px-2.5 py-0.5 text-xs text-ink-muted"
+                    className="rounded-full border border-[rgb(var(--ink-muted)/0.12)] bg-surface/80 px-2.5 py-0.5 text-xs text-ink-muted"
                   >
                     {tag}
                   </li>

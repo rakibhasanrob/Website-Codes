@@ -49,7 +49,7 @@ export function RecentWork() {
   return (
     <Section className="mt-20 sm:mt-28 mb-24">
       <div className="mb-12">
-        <h2 className="font-display text-3xl font-semibold text-ink">Recent Work Highlights</h2>
+        <h2 className="text-3xl font-semibold text-ink">Recent Work Highlights</h2>
         <p className="mt-3 text-ink-muted max-w-full">
           A few things I&apos;ve built — dashboards, maps, and animations from actual projects I&apos;ve worked on.
         </p>
@@ -64,7 +64,7 @@ export function RecentWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-elevated/40 shadow-lg backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.3)] hover:-translate-y-1 hover:shadow-2xl hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
+            className="group relative flex flex-col overflow-hidden rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 backdrop-blur-sm transition-all hover:border-accent/30 hover:-translate-y-1"
           >
             <Link href={project.link} className="flex h-full flex-col">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/20">
@@ -80,7 +80,7 @@ export function RecentWork() {
                 <span className="mb-2 text-xs font-bold uppercase tracking-wider text-accent">
                   {project.type}
                 </span>
-                <h3 className="font-display text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dim">
+                <h3 className="text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dim">
                   {project.title}
                 </h3>
               </div>

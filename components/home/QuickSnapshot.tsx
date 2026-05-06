@@ -68,9 +68,9 @@ export function QuickSnapshot() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
             whileHover={{ y: -5 }}
-            className="group relative flex w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-1rem)] min-w-[200px] items-center gap-4 rounded-2xl border border-white/[0.08] bg-surface-elevated/40 p-4 shadow-lg shadow-black/10 backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.3)] hover:bg-surface-elevated/70 hover:shadow-[0_0_20px_rgba(var(--accent),0.1)]"
+            className="group relative flex w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-1rem)] min-w-[200px] items-center gap-4 rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 p-4 backdrop-blur-sm transition-all hover:border-accent/30 hover:bg-surface-elevated/70"
           >
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent)/0.12)] text-accent shadow-inner shadow-white/5 transition-transform duration-300 group-hover:scale-110 group-hover:bg-[rgb(var(--accent)/0.2)]">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/12 text-accent transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent/20">
               {stat.icon}
             </div>
             <div>

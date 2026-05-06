@@ -104,9 +104,9 @@ export function ContactInfo() {
       {/* ── Direct Contact ───────────────────────────── */}
       <motion.div
         variants={fadeUp}
-        className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 p-6 shadow-xl shadow-black/20 backdrop-blur-md"
+        className="rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 p-6 shadow-sm backdrop-blur-sm"
       >
-        <h2 className="font-display text-lg font-semibold text-ink flex items-center gap-2.5">
+        <h2 className="text-lg font-semibold text-ink flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -119,7 +119,7 @@ export function ContactInfo() {
           {contactDetails.map((item) => (
             <div
               key={item.label}
-              className={`group rounded-xl border border-white/[0.06] bg-gradient-to-br ${item.color} p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5`}
+              className={`group rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-gradient-to-br ${item.color} p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5`}
             >
               <div className="flex items-start gap-3.5">
                 <span className={`mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface/60 ${item.iconColor} transition-colors`}>
@@ -148,7 +148,7 @@ export function ContactInfo() {
       {/* ── Fiverr CTA ───────────────────────────────── */}
       <motion.div
         variants={fadeUp}
-        className="relative overflow-hidden rounded-2xl border border-[#1DBF73]/20 bg-gradient-to-br from-[#1DBF73]/10 via-surface-elevated/60 to-[#1DBF73]/5 p-6 shadow-xl shadow-[#1DBF73]/5 backdrop-blur-md"
+        className="relative overflow-hidden rounded-2xl border border-[#1DBF73]/20 bg-gradient-to-br from-[#1DBF73]/10 via-surface-elevated/60 to-[#1DBF73]/5 p-6 shadow-xl shadow-[#1DBF73]/5 backdrop-blur-sm"
       >
         {/* Decorative glow */}
         <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#1DBF73]/10 blur-3xl" />
@@ -164,7 +164,7 @@ export function ContactInfo() {
                 />
               </svg>
             </span>
-            <h2 className="font-display text-lg font-semibold text-ink">
+            <h2 className="text-lg font-semibold text-ink">
               Work With Me on Fiverr
             </h2>
           </div>
@@ -202,9 +202,9 @@ export function ContactInfo() {
       {/* ── Social Media ─────────────────────────────── */}
       <motion.div
         variants={fadeUp}
-        className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 p-6 shadow-xl shadow-black/20 backdrop-blur-md"
+        className="rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 p-6 shadow-sm backdrop-blur-sm"
       >
-        <h2 className="font-display text-lg font-semibold text-ink flex items-center gap-2.5">
+        <h2 className="text-lg font-semibold text-ink flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -220,7 +220,7 @@ export function ContactInfo() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-surface/40 px-4 py-3 text-ink-muted transition-all duration-300 ${item.color} ${item.hoverBg}`}
+              className={`group flex items-center gap-3 rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/40 px-4 py-3 text-ink-muted transition-all duration-300 ${item.color} ${item.hoverBg}`}
             >
               <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-elevated/80 text-ink-muted transition-colors ${item.iconColor}`}>
                 <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden>

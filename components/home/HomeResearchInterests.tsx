@@ -31,16 +31,16 @@ const researchInterests = [
 export function HomeResearchInterests() {
   return (
     <Section className="mt-20 sm:mt-28">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-white/[0.08] pb-6">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
         <div>
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Research Interests
           </h2>
           <p className="mt-3 text-ink-muted max-w-2xl text-lg">Exploring the intersection of spatial data, natural environments, and predictive modeling.</p>
         </div>
         <Link 
           href="/research"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-surface-elevated/80 border border-white/10 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-[rgb(var(--accent)/0.1)] hover:border-[rgb(var(--accent)/0.3)] hover:text-accent hover:scale-105"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-surface-elevated/80 border border-[rgb(var(--ink-muted)/0.15)] px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-accent/10 hover:border-accent/30 hover:text-accent"
         >
           View Research Portfolio
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -57,7 +57,7 @@ export function HomeResearchInterests() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="group relative h-44 w-full overflow-hidden rounded-2xl shadow-lg shadow-black/10 transition-transform duration-500 hover:-translate-y-2"
+            className="group relative h-44 w-full overflow-hidden rounded-2xl transition-transform duration-500 hover:-translate-y-2"
           >
             <Image
               src={interest.img}
@@ -68,7 +68,7 @@ export function HomeResearchInterests() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
             <div className="absolute inset-x-0 bottom-0 p-5">
-              <h3 className="font-display text-base font-bold text-white shadow-black drop-shadow-md leading-snug line-clamp-3">
+              <h3 className="text-base font-bold text-white shadow-black drop-shadow-md leading-snug line-clamp-3">
                 {interest.title}
               </h3>
             </div>

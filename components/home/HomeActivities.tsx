@@ -31,15 +31,15 @@ const topActivities = [
 export function HomeActivities() {
   return (
     <Section className="mt-20 sm:mt-28">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-white/[0.08] pb-6">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
         <div>
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Extracurricular Activities
           </h2>
         </div>
         <Link 
           href="/about#accordion-activities"
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-surface-elevated/50 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-[rgb(var(--accent)/0.1)] hover:border-[rgb(var(--accent)/0.3)] hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/50 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:bg-[rgb(var(--accent)/0.1)] hover:border-[rgb(var(--accent)/0.3)] hover:text-accent"
         >
           View All Activities
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -53,7 +53,7 @@ export function HomeActivities() {
           <Link
             href="/about#accordion-activities"
             key={act.org}
-            className="group block relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-surface-elevated/30 to-surface-elevated/10 p-5 backdrop-blur-md transition-all duration-300 hover:border-[rgb(var(--accent)/0.3)] hover:bg-surface-elevated/50 hover:shadow-lg hover:shadow-[0_4px_20px_rgba(var(--accent),0.08)] hover:-translate-y-1"
+            className="group block relative overflow-hidden rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/30 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 hover:bg-surface-elevated/50 hover:-translate-y-1"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -62,7 +62,7 @@ export function HomeActivities() {
               transition={{ delay: i * 0.1, duration: 0.4 }}
               className="flex items-center gap-4 h-full"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/10 p-2 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-elevated p-2 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent/10">
                 <Image
                   src={act.logo}
                   alt={act.org}
@@ -72,7 +72,7 @@ export function HomeActivities() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-display text-sm font-bold text-ink leading-tight truncate mb-1 group-hover:text-accent transition-colors">
+                <h3 className="text-sm font-bold text-ink leading-tight truncate mb-1 group-hover:text-accent transition-colors">
                   {act.org}
                 </h3>
                 <p className="text-xs font-medium text-ink-muted truncate">

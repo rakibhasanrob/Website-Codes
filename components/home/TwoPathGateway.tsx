@@ -16,12 +16,12 @@ export function TwoPathGateway() {
           transition={{ duration: 0.5 }}
           className="h-full"
         >
-          <Card className="group flex h-full flex-col items-start justify-between bg-gradient-to-br from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] transition-all hover:border-[rgb(var(--accent)/0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.15)]">
+          <Card className="group flex h-full flex-col items-start justify-between bg-gradient-to-br from-surface-elevated/80 to-accent/5 transition-all hover:border-accent/30">
             <div>
-              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--accent)/0.15)] text-2xl shadow-inner shadow-white/10 transition-transform duration-300 group-hover:scale-110">
+              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 text-2xl transition-transform duration-300 group-hover:scale-110">
                 🎓
               </div>
-              <h2 className="font-display text-2xl font-semibold text-ink">
+              <h2 className="text-2xl font-semibold text-ink">
                 Academic & Research
               </h2>
               <p className="mt-3 text-ink-muted leading-relaxed">
@@ -43,12 +43,12 @@ export function TwoPathGateway() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="h-full"
         >
-          <Card className="group flex h-full flex-col items-start justify-between bg-gradient-to-br from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] transition-all hover:border-[rgb(var(--accent)/0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.15)]">
+          <Card className="group flex h-full flex-col items-start justify-between bg-gradient-to-br from-surface-elevated/80 to-accent/5 transition-all hover:border-accent/30">
             <div>
-              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--accent)/0.15)] text-2xl shadow-inner shadow-white/10 transition-transform duration-300 group-hover:scale-110">
+              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 text-2xl transition-transform duration-300 group-hover:scale-110">
                 💼
               </div>
-              <h2 className="font-display text-2xl font-semibold text-ink">
+              <h2 className="text-2xl font-semibold text-ink">
                 Real World Projects
               </h2>
               <p className="mt-3 text-ink-muted leading-relaxed">

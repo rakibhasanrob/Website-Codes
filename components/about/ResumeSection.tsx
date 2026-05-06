@@ -201,7 +201,7 @@ function AccordionItem({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-surface-elevated/60 shadow-xl shadow-black/20 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-accent/15 hover:shadow-accent/5">
+    <div className="rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 shadow-sm backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-accent/15 hover:shadow-accent/5">
       <button
         type="button"
         id={id}
@@ -212,7 +212,7 @@ function AccordionItem({
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent">
           {icon}
         </span>
-        <span className="flex-1 font-display text-lg font-semibold text-ink">
+        <span className="flex-1 text-lg font-semibold text-ink">
           {title}
         </span>
         <svg
@@ -310,7 +310,7 @@ export function ResumeSection() {
         className="mb-10"
       >
         <div className="flex flex-wrap items-end gap-4 justify-between">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Overview
           </h2>
           <a
@@ -352,10 +352,10 @@ export function ResumeSection() {
               {education.map((edu) => (
                 <div
                   key={edu.degree}
-                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:bg-surface/80 hover:shadow-lg hover:shadow-accent/5"
+                  className="rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:bg-surface/80 hover:shadow-lg hover:shadow-accent/5"
                 >
                   <div className="flex gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-elevated p-1.5">
                       <Image
                         src={edu.logo}
                         alt={edu.institution}
@@ -367,7 +367,7 @@ export function ResumeSection() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-start justify-between gap-2">
                         <div>
-                          <h3 className="font-display text-base font-semibold text-ink leading-snug">
+                          <h3 className="text-base font-semibold text-ink leading-snug">
                             {edu.degree}
                           </h3>
                           <p className="mt-0.5 text-sm text-ink-muted">
@@ -378,7 +378,7 @@ export function ResumeSection() {
                           href={edu.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
                         >
                           Visit
                           <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -426,7 +426,7 @@ export function ResumeSection() {
               {skillGroups.map((group) => (
                 <div
                   key={group.label}
-                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                  className="rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-accent/80">{group.icon}</span>
@@ -438,7 +438,7 @@ export function ResumeSection() {
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-200 hover:border-accent/30 hover:text-ink hover:bg-accent/10 hover:scale-105"
+                        className="rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-200 hover:border-accent/30 hover:text-ink hover:bg-accent/10 hover:scale-105"
                       >
                         {item}
                       </span>
@@ -472,10 +472,10 @@ export function ResumeSection() {
               {certifications.map((cert) => (
                 <div
                   key={cert.title}
-                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                  className="rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 >
                   <div className="flex gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-elevated p-1.5">
                       <Image
                         src={cert.logo}
                         alt={cert.issuer}
@@ -487,7 +487,7 @@ export function ResumeSection() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-start justify-between gap-2">
                         <div>
-                          <h4 className="font-display text-base font-semibold text-ink leading-snug">
+                          <h4 className="text-base font-semibold text-ink leading-snug">
                             {cert.title}
                           </h4>
                           <p className="mt-0.5 text-sm text-accent/80 font-medium">
@@ -498,7 +498,7 @@ export function ResumeSection() {
                           href={cert.verifyLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
                         >
                           Verify
                           <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -515,7 +515,7 @@ export function ResumeSection() {
                     <button
                       type="button"
                       onClick={() => setLightboxSrc(cert.certPic)}
-                      className="group relative overflow-hidden rounded-lg border border-white/[0.08] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
+                      className="group relative overflow-hidden rounded-lg border border-[rgb(var(--ink-muted)/0.12)] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
                     >
                       <Image
                         src={cert.certPic}
@@ -557,10 +557,10 @@ export function ResumeSection() {
               {jobSimulations.map((sim) => (
                 <div
                   key={sim.title}
-                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                  className="rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 >
                   <div className="flex gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-elevated p-1.5">
                       <Image
                         src={sim.logo}
                         alt={sim.company}
@@ -572,7 +572,7 @@ export function ResumeSection() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-start justify-between gap-2">
                         <div>
-                          <h4 className="font-display text-base font-semibold text-ink leading-snug">
+                          <h4 className="text-base font-semibold text-ink leading-snug">
                             {sim.title}
                           </h4>
                           <p className="mt-0.5 text-sm text-accent/80 font-medium">
@@ -586,7 +586,7 @@ export function ResumeSection() {
                           href={sim.verifyLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
                         >
                           Verify
                           <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -603,7 +603,7 @@ export function ResumeSection() {
                     <button
                       type="button"
                       onClick={() => setLightboxSrc(sim.certPic)}
-                      className="group relative overflow-hidden rounded-lg border border-white/[0.08] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
+                      className="group relative overflow-hidden rounded-lg border border-[rgb(var(--ink-muted)/0.12)] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
                     >
                       <Image
                         src={sim.certPic}
@@ -646,7 +646,7 @@ export function ResumeSection() {
               {activities.map((act) => (
                 <div
                   key={act.org}
-                  className="rounded-xl border border-white/[0.06] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                  className="rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface/50 p-4 transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 >
                   <div className="flex gap-4">
                     {/* Logo */}
@@ -654,7 +654,7 @@ export function ResumeSection() {
                       href={act.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/10 p-1.5 transition-transform duration-300 hover:scale-110"
+                      className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-elevated p-1.5 transition-transform duration-300 hover:scale-110"
                     >
                       <Image
                         src={act.logo}
@@ -668,7 +668,7 @@ export function ResumeSection() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-start justify-between gap-2">
                         <div>
-                          <h4 className="font-display text-base font-semibold text-ink leading-snug">
+                          <h4 className="text-base font-semibold text-ink leading-snug">
                             {act.org}
                           </h4>
                           <p className="text-sm text-accent/80 font-medium">
@@ -679,7 +679,7 @@ export function ResumeSection() {
                           href={act.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-white/10 bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
+                          className="shrink-0 inline-flex items-center gap-1 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-3 py-1 text-xs font-medium text-ink-muted transition-all duration-300 hover:border-accent/30 hover:text-accent hover:scale-105 hover:shadow-md"
                         >
                           Visit
                           <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -704,7 +704,7 @@ export function ResumeSection() {
                           key={pic}
                           type="button"
                           onClick={() => setLightboxSrc(pic)}
-                          className="group relative overflow-hidden rounded-lg border border-white/[0.08] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
+                          className="group relative overflow-hidden rounded-lg border border-[rgb(var(--ink-muted)/0.12)] w-20 h-14 sm:w-24 sm:h-16 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 hover:scale-105"
                         >
                           <Image
                             src={pic}

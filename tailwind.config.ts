@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-geist-sans)", "system-ui"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
       },
       colors: {
         surface: {
@@ -25,10 +25,6 @@ const config: Config = {
           DEFAULT: "rgb(var(--accent) / <alpha-value>)",
           dim: "rgb(var(--accent-dim) / <alpha-value>)",
         },
-      },
-      backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to bottom, rgb(var(--surface) / 0.97), rgb(var(--surface) / 1)), radial-gradient(ellipse 80% 50% at 50% -20%, rgb(var(--accent) / 0.15), transparent)",
       },
     },
   },

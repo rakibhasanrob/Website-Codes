@@ -15,10 +15,10 @@ export function Button({
     "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
   const variants = {
     primary:
-      "bg-accent text-surface shadow-lg shadow-accent/20 hover:bg-accent-dim hover:shadow-accent/30",
+      "bg-accent text-surface shadow-sm hover:bg-accent-dim",
     ghost: "text-ink-muted hover:bg-surface-elevated hover:text-ink",
     outline:
-      "border border-white/10 bg-surface-elevated/50 text-ink hover:border-accent/40 hover:bg-surface-elevated",
+      "border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/50 text-ink hover:border-accent/40 hover:bg-surface-elevated",
   };
   return (
     <button
@@ -42,10 +42,10 @@ export function ButtonLink({
     "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
   const variants = {
     primary:
-      "bg-accent text-surface shadow-lg shadow-accent/20 hover:bg-accent-dim hover:shadow-accent/30",
+      "bg-accent text-surface shadow-sm hover:bg-accent-dim",
     ghost: "text-ink-muted hover:bg-surface-elevated hover:text-ink",
     outline:
-      "border border-white/10 bg-surface-elevated/50 text-ink hover:border-accent/40 hover:bg-surface-elevated",
+      "border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/50 text-ink hover:border-accent/40 hover:bg-surface-elevated",
   };
   return (
     <Link className={`${base} ${variants[variant]} ${className}`} {...props} />

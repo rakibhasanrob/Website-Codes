@@ -34,7 +34,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
       >
         <button
           onClick={onClose}
-          className="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-surface-elevated border border-white/10 text-ink-muted hover:text-ink transition-colors"
+          className="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-surface-elevated border border-[rgb(var(--ink-muted)/0.15)] text-ink-muted hover:text-ink transition-colors"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -83,7 +83,7 @@ function ActionButtons({
 function SectionTitle({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="mb-10 text-center">
-      <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
       {subtitle && <p className="mx-auto mt-4 max-w-2xl text-ink-muted">{subtitle}</p>}
     </div>
   );
@@ -92,7 +92,7 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 /* ─── Video Card ────────────────────────────────────────── */
 function VideoCard({ title, video, description }: { title: string; video: string; description?: string }) {
   return (
-    <div className="group rounded-2xl border border-white/[0.08] bg-surface-elevated/60 shadow-xl shadow-black/10 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-accent/20 hover:shadow-accent/5 hover:-translate-y-1">
+    <div className="group rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 shadow-sm backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-accent/20 hover:shadow-accent/5 hover:-translate-y-1">
       <div className="relative aspect-video bg-black">
         <video
           src={video}
@@ -103,7 +103,7 @@ function VideoCard({ title, video, description }: { title: string; video: string
         />
       </div>
       <div className="p-5">
-        <h3 className="font-display text-lg font-semibold text-ink">{title}</h3>
+        <h3 className="text-lg font-semibold text-ink">{title}</h3>
         {description && <p className="mt-2 text-sm leading-relaxed text-ink-muted">{description}</p>}
       </div>
     </div>
@@ -119,7 +119,7 @@ function DashboardCard({
   onImageClick: (src: string, alt: string) => void;
 }) {
   return (
-    <div className="group rounded-2xl border border-white/[0.08] bg-surface-elevated/60 shadow-xl shadow-black/10 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-accent/20 hover:shadow-accent/5">
+    <div className="group rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/60 shadow-sm backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-accent/20 hover:shadow-accent/5">
       {/* Image carousel or single image */}
       <div
         className="relative aspect-[16/10] bg-surface cursor-pointer overflow-hidden"
@@ -139,7 +139,7 @@ function DashboardCard({
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-display text-lg font-semibold text-ink">{project.title}</h3>
+        <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted line-clamp-3">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.dashboardUrl && (
@@ -160,7 +160,7 @@ function DashboardCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1.5 text-xs font-medium text-ink-muted transition-colors hover:border-accent/30 hover:text-ink"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[rgb(var(--ink-muted)/0.15)] px-3.5 py-1.5 text-xs font-medium text-ink-muted transition-colors hover:border-accent/30 hover:text-ink"
             >
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 4a8 8 0 0 0-2.53 15.59c.4.08.55-.17.55-.38v-1.33c-2.23.48-2.7-.95-2.7-.95-.36-.92-.9-1.17-.9-1.17-.73-.5.06-.49.06-.49.82.06 1.24.84 1.24.84.7 1.2 1.83.85 2.28.65.07-.52.28-.86.5-1.06-1.78-.2-3.66-.9-3.66-3.96 0-.88.32-1.59.83-2.15-.08-.2-.36-1.02.08-2.13 0 0 .68-.22 2.2.82A7.43 7.43 0 0 1 12 7.8c.68 0 1.36.1 2 .28 1.52-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.52.56.83 1.27.83 2.15 0 3.07-1.88 3.76-3.67 3.96.29.24.54.73.54 1.48v2.2c0 .21.15.47.56.38A8 8 0 0 0 12 4Z" />
@@ -227,7 +227,7 @@ function GalleryGrid({
           return (
             <div
               key={img}
-              className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+              className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
               onClick={() => onImageClick(src, alt)}
             >
               <div className="relative">
@@ -291,7 +291,7 @@ function ProjectsContentInner() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                 active === cat.key
                   ? "bg-accent text-surface shadow-lg shadow-accent/20"
-                  : "border border-white/10 bg-surface-elevated/50 text-ink-muted hover:border-accent/30 hover:text-ink"
+                  : "border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/50 text-ink-muted hover:border-accent/30 hover:text-ink"
               }`}
             >
               {cat.label}
@@ -381,12 +381,12 @@ function ProjectsContentInner() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-surface-elevated via-surface-elevated/80 to-[rgb(var(--accent)/0.15)] px-6 py-16 text-center shadow-2xl backdrop-blur-md sm:px-12 sm:py-20"
+          className="relative overflow-hidden rounded-3xl border border-[rgb(var(--ink-muted)/0.12)] bg-gradient-to-br from-surface-elevated via-surface-elevated/80 to-[rgb(var(--accent)/0.15)] px-6 py-16 text-center backdrop-blur-sm sm:px-12 sm:py-20"
         >
           <div className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[rgb(var(--accent)/0.25)] blur-3xl pointer-events-none" aria-hidden />
           <div className="absolute -bottom-10 -right-10 h-64 w-64 rounded-full bg-[rgb(var(--accent)/0.15)] blur-3xl pointer-events-none" aria-hidden />
           <div className="relative z-10 mx-auto max-w-3xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
               Like what you see?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-ink-muted">

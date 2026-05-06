@@ -83,8 +83,8 @@ export function ResearchPageContent() {
       
       {/* 1. Research Interests */}
       <Section>
-        <div className="mb-10 text-center sm:text-left border-b border-white/[0.08] pb-6">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <div className="mb-10 text-center sm:text-left border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Research Interests
           </h2>
 
@@ -97,7 +97,7 @@ export function ResearchPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group relative h-48 sm:h-56 w-full overflow-hidden rounded-2xl shadow-xl shadow-black/10"
+              className="group relative h-48 sm:h-56 w-full overflow-hidden rounded-2xl shadow-sm"
             >
               <Image
                 src={interest.img}
@@ -108,7 +108,7 @@ export function ResearchPageContent() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="font-display text-lg font-bold text-white shadow-black drop-shadow-md decoration-accent group-hover:underline underline-offset-4 line-clamp-2">
+                <h3 className="text-lg font-bold text-white shadow-black drop-shadow-md decoration-accent group-hover:underline underline-offset-4 line-clamp-2">
                   {interest.title}
                 </h3>
               </div>
@@ -120,8 +120,8 @@ export function ResearchPageContent() {
 
       {/* 2. Academic Projects */}
       <Section>
-        <div className="mb-10 border-b border-white/[0.08] pb-6">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl text-center sm:text-left">
+        <div className="mb-10 border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl text-center sm:text-left">
             Academic Projects
           </h2>
           <p className="mt-3 text-ink-muted text-lg text-center sm:text-left">Highlighting extensive field studies and technical research reports.</p>
@@ -134,13 +134,13 @@ export function ResearchPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-surface-elevated/40 shadow-2xl backdrop-blur-xl transition-all hover:border-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.15)] hover:-translate-y-1"
+              className="flex flex-col overflow-hidden rounded-3xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 backdrop-blur-sm transition-all hover:border-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.15)] hover:-translate-y-1"
             >
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block h-64 w-full sm:h-72 border-b border-white/[0.05] bg-black/20 overflow-hidden"
+                className="relative block h-64 w-full sm:h-72 border-b border-[rgb(var(--ink-muted)/0.08)] bg-black/20 overflow-hidden"
               >
                 <Image
                   src={project.image}
@@ -151,13 +151,13 @@ export function ResearchPageContent() {
                 />
               </a>
               <div className="flex flex-1 flex-col p-6 sm:p-8">
-                <h3 className="font-display text-xl font-bold text-ink leading-snug line-clamp-3">
+                <h3 className="text-xl font-bold text-ink leading-snug line-clamp-3">
                   {project.title}
                 </h3>
                 <p className="mt-4 text-ink-muted leading-relaxed flex-1">
                   {project.desc}
                 </p>
-                <div className="mt-8 pt-4 border-t border-white/[0.06]">
+                <div className="mt-8 pt-4 border-t border-[rgb(var(--ink-muted)/0.1)]">
                   <a
                     href={project.link}
                     target="_blank"
@@ -178,8 +178,8 @@ export function ResearchPageContent() {
 
       {/* 3. Publications */}
       <Section>
-        <div className="mb-10 text-center sm:text-left border-b border-white/[0.08] pb-6">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <div className="mb-10 text-center sm:text-left border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Publications
           </h2>
         </div>
@@ -187,7 +187,7 @@ export function ResearchPageContent() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex min-h-[160px] items-center justify-center rounded-2xl border border-dashed border-white/[0.15] bg-surface-elevated/20 p-8 text-center"
+          className="flex min-h-[160px] items-center justify-center rounded-2xl border border-dashed border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/20 p-8 text-center"
         >
           <div className="text-ink-muted">
             <svg className="mx-auto h-8 w-8 mb-3 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
@@ -201,8 +201,8 @@ export function ResearchPageContent() {
 
       {/* 4. GIS & RS Maps Gallery */}
       <Section>
-        <div className="mb-10 border-b border-white/[0.08] pb-6">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl text-center sm:text-left">
+        <div className="mb-10 border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl text-center sm:text-left">
             GIS &amp; Remote Sensing Maps
           </h2>
           <p className="mt-3 text-ink-muted text-lg text-center sm:text-left">
@@ -217,7 +217,7 @@ export function ResearchPageContent() {
             return (
               <div
                 key={src}
-                className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
+                className="group mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-[rgb(var(--ink-muted)/0.1)] bg-surface-elevated/40 shadow-md transition-all duration-300 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
                 onClick={() => setLightboxSrc(src)}
               >
                 <div className="relative">
@@ -253,8 +253,8 @@ export function ResearchPageContent() {
 
       {/* 5. Research Positions */}
       <Section>
-        <div className="mb-10 text-center sm:text-left border-b border-white/[0.08] pb-6">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <div className="mb-10 text-center sm:text-left border-b border-[rgb(var(--ink-muted)/0.12)] pb-6">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Research Positions
           </h2>
         </div>
@@ -266,7 +266,7 @@ export function ResearchPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border border-[rgb(var(--accent)/0.15)] bg-gradient-to-r from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] p-5 sm:p-6 shadow-xl backdrop-blur-md transition-all hover:border-[rgb(var(--accent)/0.4)] hover:shadow-[rgb(var(--accent)/0.1)]"
+              className="relative flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border border-[rgb(var(--accent)/0.15)] bg-gradient-to-r from-surface-elevated/80 to-[rgb(var(--accent)/0.05)] p-5 sm:p-6 shadow-xl backdrop-blur-sm transition-all hover:border-[rgb(var(--accent)/0.4)] hover:shadow-[rgb(var(--accent)/0.1)]"
             >
               <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center transition-transform hover:scale-110">
                 <Image
@@ -278,7 +278,7 @@ export function ResearchPageContent() {
                 />
               </div>
               <div className="flex-1 text-left">
-                <h3 className="font-display text-xl font-bold text-ink mb-1">
+                <h3 className="text-xl font-bold text-ink mb-1">
                   {pos.org}
                 </h3>
                 <p className="text-base font-medium text-accent">
@@ -330,7 +330,7 @@ export function ResearchPageContent() {
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); setLightboxSrc(null); }}
-              className="absolute right-5 top-5 sm:right-8 sm:top-8 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110 border border-white/20 z-[210]"
+              className="absolute right-5 top-5 sm:right-8 sm:top-8 flex h-12 w-12 items-center justify-center rounded-full bg-surface-elevated text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-110 border border-white/20 z-[210]"
               aria-label="Close lightbox"
             >
               <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>

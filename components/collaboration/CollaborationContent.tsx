@@ -97,7 +97,7 @@ export function CollaborationContent() {
           variants={stagger}
         >
           <motion.div variants={fadeIn} className="mb-12 text-center">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Ways to Collaborate
             </h2>
           </motion.div>
@@ -108,7 +108,7 @@ export function CollaborationContent() {
                 key={item.title}
                 custom={i}
                 variants={fadeUp}
-                className="group relative h-72 sm:h-80 w-full overflow-hidden rounded-2xl shadow-xl shadow-black/10"
+                className="group relative h-72 sm:h-80 w-full overflow-hidden rounded-2xl shadow-sm"
               >
                 <Image
                   src={item.image}
@@ -120,7 +120,7 @@ export function CollaborationContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
                 
                 <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6">
-                  <h3 className="font-display text-xl font-bold text-white shadow-black drop-shadow-md decoration-accent group-hover:underline underline-offset-4 line-clamp-2">
+                  <h3 className="text-xl font-bold text-white shadow-black drop-shadow-md decoration-accent group-hover:underline underline-offset-4 line-clamp-2">
                     {item.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/90 line-clamp-3">
@@ -151,7 +151,7 @@ export function CollaborationContent() {
           variants={stagger}
         >
           <motion.div variants={fadeIn} className="mb-12 text-center">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Clients &amp; Organizations
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-ink-muted">
@@ -162,7 +162,7 @@ export function CollaborationContent() {
           {/* Marquee scroll */}
           <motion.div
             variants={fadeIn}
-            className="relative mt-8 overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-elevated/40 py-10 shadow-xl backdrop-blur-md"
+            className="relative mt-8 overflow-hidden rounded-2xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 py-10 shadow-xl backdrop-blur-sm"
           >
             {/* Decorative edge gradients using CSS variables to adapt to light/dark mode */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[rgba(var(--surface-elevated),0.95)] to-transparent z-10" />
@@ -197,14 +197,14 @@ export function CollaborationContent() {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-surface-elevated via-surface-elevated/80 to-[rgb(var(--accent)/0.15)] px-6 py-16 text-center shadow-2xl backdrop-blur-md sm:px-12 sm:py-20"
+          className="relative overflow-hidden rounded-3xl border border-[rgb(var(--ink-muted)/0.12)] bg-gradient-to-br from-surface-elevated via-surface-elevated/80 to-[rgb(var(--accent)/0.15)] px-6 py-16 text-center backdrop-blur-sm sm:px-12 sm:py-20"
         >
           {/* Decorative glows */}
           <div className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[rgb(var(--accent)/0.25)] blur-3xl pointer-events-none" aria-hidden />
           <div className="absolute -bottom-10 -right-10 h-64 w-64 rounded-full bg-[rgb(var(--accent)/0.15)] blur-3xl pointer-events-none" aria-hidden />
 
           <div className="relative z-10 mx-auto max-w-3xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
               Interested in working together?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-ink-muted">

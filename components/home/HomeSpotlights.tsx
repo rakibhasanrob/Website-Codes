@@ -24,15 +24,15 @@ export function HomeSpotlights({
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.45 }}
         >
-          <h2 className="font-display text-2xl font-semibold text-ink">
+          <h2 className="text-2xl font-semibold text-ink">
             Research spotlight
           </h2>
           <p className="mt-2 text-ink-muted">
             Selected project from your research portfolio.
           </p>
           <Card className="mt-6">
-            <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-accent/25 to-surface-elevated ring-1 ring-white/5" />
-            <h3 className="mt-5 font-display text-xl font-semibold text-ink">
+            <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-accent/15 to-surface-elevated ring-1 ring-[rgb(var(--ink-muted)/0.1)]" />
+            <h3 className="mt-5 text-xl font-semibold text-ink">
               {featuredResearch.title}
             </h3>
             <p className="mt-2 text-sm text-ink-muted">{featuredResearch.summary}</p>
@@ -50,13 +50,13 @@ export function HomeSpotlights({
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.45, delay: 0.08 }}
         >
-          <h2 className="font-display text-2xl font-semibold text-ink">Work spotlight</h2>
+          <h2 className="text-2xl font-semibold text-ink">Work spotlight</h2>
           <p className="mt-2 text-ink-muted">
             Highlight from professional and product work.
           </p>
           <Card className="mt-6">
-            <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-accent/15 to-surface-elevated ring-1 ring-white/5" />
-            <h3 className="mt-5 font-display text-xl font-semibold text-ink">
+            <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-accent/10 to-surface-elevated ring-1 ring-[rgb(var(--ink-muted)/0.1)]" />
+            <h3 className="mt-5 text-xl font-semibold text-ink">
               {featuredWork.title}
             </h3>
             <p className="mt-2 text-sm text-ink-muted">{featuredWork.summary}</p>

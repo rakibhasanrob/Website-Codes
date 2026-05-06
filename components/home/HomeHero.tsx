@@ -64,7 +64,7 @@ const socialLinks = [
   {
     label: "Email",
     href: "mailto:contact@rakibhasan.rf.gd",
-    hoverClass: "hover:text-[#2563EB]",
+    hoverClass: "hover:text-accent",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" fill="none" stroke="currentColor" strokeWidth="1.8" />
     ),
@@ -74,12 +74,12 @@ const socialLinks = [
 export function HomeHero() {
   return (
     <Section className="relative py-12 sm:py-16 lg:py-20">
-      <div className="relative overflow-visible rounded-3xl border border-white/10 bg-surface-elevated/40 px-5 py-10 shadow-2xl shadow-black/20 backdrop-blur-md sm:px-8 sm:py-12 lg:px-10 lg:py-14">
+      <div className="relative overflow-visible rounded-3xl border border-[rgb(var(--ink-muted)/0.12)] bg-surface-elevated/40 px-5 py-10 backdrop-blur-sm sm:px-8 sm:py-12 lg:px-10 lg:py-14">
 
         <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-left">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">Portfolio</p>
-            <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">Rakib Hasan</h1>
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">Rakib Hasan</h1>
             <p className="mt-5 text-lg text-ink-muted sm:text-xl">
               <DynamicType words={titles} typingSpeed={130} deletingSpeed={70} pauseMs={2100} />
             </p>
@@ -96,7 +96,7 @@ export function HomeHero() {
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55, delay: 0.08 }} className="mx-auto w-full max-w-md">
             <motion.div whileHover={{ y: -5 }} transition={{ type: "spring", stiffness: 220, damping: 20 }}>
-              <div className="mx-auto h-72 w-72 overflow-hidden rounded-full border-4 border-[rgb(var(--ink-muted)/0.25)] bg-surface-elevated shadow-2xl shadow-black/30 sm:h-80 sm:w-80">
+              <div className="mx-auto h-72 w-72 overflow-hidden rounded-full border-4 border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated sm:h-80 sm:w-80">
                 <Image src="/my_pic1.jpeg" alt="Rakib Hasan portrait" width={420} height={420} className="h-full w-full object-cover" priority />
               </div>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -108,7 +108,7 @@ export function HomeHero() {
                     rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                     aria-label={item.label}
                     title={item.label}
-                    className={`group inline-flex h-10 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.28)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
+                    className={`group inline-flex h-10 items-center overflow-hidden rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/60 text-ink-muted transition-all duration-300 hover:w-auto hover:pr-3 ${item.hoverClass}`}
                   >
                     <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center">
                       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>

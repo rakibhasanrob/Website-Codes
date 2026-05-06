@@ -48,7 +48,7 @@ export function ContactForm() {
   }
 
   const inputClasses =
-    "mt-2 w-full rounded-xl border border-white/10 bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all duration-200";
+    "mt-2 w-full rounded-xl border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/80 px-4 py-3 text-ink placeholder:text-ink-muted focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all duration-200";
 
   const labelClasses = "block text-sm font-medium text-ink";
 
@@ -87,7 +87,7 @@ export function ContactForm() {
                 />
               </svg>
             </motion.div>
-            <h3 className="font-display text-xl font-semibold text-ink">
+            <h3 className="text-xl font-semibold text-ink">
               Message Sent!
             </h3>
             <p className="mt-2 max-w-xs text-sm text-ink-muted">
