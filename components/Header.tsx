@@ -108,40 +108,37 @@ export function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="group inline-flex h-10 items-center gap-2 rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-surface-elevated/70 px-2 text-sm font-medium text-ink transition hover:border-accent/40"
+            className="group relative inline-flex h-7 w-12 items-center rounded-full border border-[rgb(var(--ink-muted)/0.15)] bg-[rgb(var(--ink-muted)/0.2)] transition-colors hover:border-accent/40"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            <span className="relative inline-flex h-6 w-11 items-center rounded-full bg-[rgb(var(--ink-muted)/0.25)] transition-colors group-hover:bg-accent/30">
-              <span
-                className={`absolute top-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-surface text-ink shadow-sm transition-transform ${
-                  theme === "dark" ? "translate-x-0.5" : "translate-x-5"
-                }`}
-              >
-                {theme === "dark" ? (
-                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
-                    <path
-                      d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36 6.36-1.41-1.41M7.05 7.05 5.64 5.64m12.72 0-1.41 1.41M7.05 16.95l-1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ) : (
-                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden>
-                    <path
-                      d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5Z"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-              </span>
+            <span
+              className={`absolute inline-flex h-5 w-5 items-center justify-center rounded-full bg-surface text-ink shadow-sm transition-all duration-300 ${
+                theme === "dark" ? "left-1" : "left-[1.45rem]"
+              }`}
+            >
+              {theme === "dark" ? (
+                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36 6.36-1.41-1.41M7.05 7.05 5.64 5.64m12.72 0-1.41 1.41M7.05 16.95l-1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              ) : (
+                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
             </span>
-            <span className="hidden pr-1 sm:inline">{theme === "dark" ? "Light mode" : "Dark mode"}</span>
           </button>
           <button
             type="button"

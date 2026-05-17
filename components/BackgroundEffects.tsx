@@ -2,14 +2,26 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
+import { GlobeCanvas } from "@/components/GlobeCanvas";
 
-type EffectMode = "none" | "plexus" | "galaxy" | "ember" | "snow";
+type EffectMode = "none" | "globe" | "plexus" | "galaxy" | "ember" | "snow";
 
 const effectButtons: { mode: EffectMode; label: string; icon: ReactNode }[] = [
   {
     mode: "none",
     label: "No effects",
     icon: <path d="M5 5l14 14M19 5 5 19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />,
+  },
+  {
+    mode: "globe",
+    label: "Globe",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.6" />
+        <ellipse cx="12" cy="12" rx="3.5" ry="8" stroke="currentColor" strokeWidth="1.2" />
+        <path d="M4.5 9h15M4.5 15h15" stroke="currentColor" strokeWidth="1.1" />
+      </>
+    ),
   },
   {
     mode: "plexus",
@@ -56,15 +68,15 @@ const effectButtons: { mode: EffectMode; label: string; icon: ReactNode }[] = [
 ];
 
 export function BackgroundEffects() {
-  const [effectMode, setEffectMode] = useState<EffectMode>("galaxy");
+  const [effectMode, setEffectMode] = useState<EffectMode>("globe");
   const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     const saved = window.localStorage.getItem("hero-effect");
     const valid = effectButtons.some((item) => item.mode === saved);
-    const next = valid ? (saved as EffectMode) : "galaxy";
+    const next = valid ? (saved as EffectMode) : "globe";
     setEffectMode(next);
-    if (!saved) window.localStorage.setItem("hero-effect", "galaxy");
+    if (!saved) window.localStorage.setItem("hero-effect", "globe");
 
     // Detect theme for effect colour adaptation
     const checkTheme = () => setIsLight(document.documentElement.classList.contains("light"));
@@ -483,11 +495,26 @@ export function BackgroundEffects() {
           </>
         ) : null}
 
+        {/* ══════════════ GLOBE ══════════════ */}
+        {effectMode === "globe" ? (
+          <>
+            {/* Ambient glow on right side */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `radial-gradient(ellipse 60% 70% at 75% 50%, ${glowBlob} / ${accentOpacity * 0.5}), transparent 70%)`,
+              }}
+            />
+            {/* Real rotating globe — right side, partially visible */}
+            <GlobeCanvas isLight={isLight} />
+          </>
+        ) : null}
+
       </div>
 
       {/* ══ Desktop dock (right side) ══ */}
-      <div className="fixed right-3 top-1/2 z-50 -translate-y-1/2 hidden lg:block">
-        <div className="flex flex-col items-center gap-1.5 rounded-2xl border border-[rgb(var(--ink-muted)/0.18)] bg-surface-elevated/85 px-1.5 py-3 backdrop-blur-md shadow-sm">
+      <div className="fixed right-1 top-1/2 z-50 -translate-y-1/2 hidden lg:block">
+        <div className="flex flex-col items-center gap-1 rounded-xl border border-[rgb(var(--ink-muted)/0.18)] bg-surface-elevated/85 px-1 py-2 backdrop-blur-md shadow-sm">
           {effectButtons.map((item) => {
             const active = item.mode === effectMode;
             return (
@@ -495,7 +522,7 @@ export function BackgroundEffects() {
                 key={item.mode}
                 type="button"
                 onClick={() => handleEffectChange(item.mode)}
-                className={`dock-item relative inline-flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-200 hover:-translate-x-1 hover:scale-150 ${
+                className={`dock-item relative inline-flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200 hover:-translate-x-1 hover:scale-150 ${
                   active
                     ? "bg-accent/25 text-accent shadow-sm"
                     : "text-ink-muted hover:bg-accent/15 hover:text-accent"
@@ -504,7 +531,7 @@ export function BackgroundEffects() {
                 aria-label={item.label}
                 aria-pressed={active}
               >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
+                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" aria-hidden>
                   {item.icon}
                 </svg>
               </button>
@@ -515,7 +542,7 @@ export function BackgroundEffects() {
 
       {/* ══ Mobile dock (bottom) ══ */}
       <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 lg:hidden">
-        <div className="flex items-center gap-1.5 rounded-2xl border border-[rgb(var(--ink-muted)/0.18)] bg-surface-elevated/85 px-3 py-1.5 backdrop-blur-md shadow-sm">
+        <div className="flex items-center gap-1 rounded-xl border border-[rgb(var(--ink-muted)/0.18)] bg-surface-elevated/85 px-2 py-1 backdrop-blur-md shadow-sm">
           {effectButtons.map((item) => {
             const active = item.mode === effectMode;
             return (
@@ -523,7 +550,7 @@ export function BackgroundEffects() {
                 key={`${item.mode}-mobile`}
                 type="button"
                 onClick={() => handleEffectChange(item.mode)}
-                className={`inline-flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-1 hover:scale-125 ${
+                className={`inline-flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200 hover:-translate-y-1 hover:scale-125 ${
                   active
                     ? "bg-accent/25 text-accent shadow-sm"
                     : "text-ink-muted hover:bg-accent/15 hover:text-accent"
@@ -531,7 +558,7 @@ export function BackgroundEffects() {
                 title={item.label}
                 aria-label={item.label}
               >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
+                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" aria-hidden>
                   {item.icon}
                 </svg>
               </button>
